@@ -21,7 +21,7 @@ int main (void) {
     int option;
     Vara nyVara;
     int v;
-    char tempString[100];
+    char tempString[256];
     float tempFloat;
     varor = Read();
     while(true){
@@ -50,7 +50,7 @@ int main (void) {
         switch(option){
             case 1:
                 printf("1Not implemented\n");
-                for(int i = 0; i < 100; i++){
+                for(int i = 0; i < 16; i++){
                 printf("%i %s %f %f %s %s %s %s %s %f\n\n",varor->varunummer,varor->namn,varor->pris,varor->volym,varor->typ,varor->stil,varor->forpackning,varor->land,varor->producent,varor->alkoholhalt);
                 varor++;
                 }
@@ -59,35 +59,51 @@ int main (void) {
                 printf("2Not implemented\n");
                 break;    
             case 3:
+                //Varunummer
                 printf("\nEnter varunummer: ");
-                gets(tempString);
-                nyVara.varunummer = strtol(tempString, end, NULL);
+                fgets(tempString,256,stdin);
+                varor->varunummer = atoi(tempString);
+
                 printf("Enter namn: ");
-                gets(nyVara.namn);
+                fgets(tempString,256,stdin);
+                strcpy(varor->namn,tempString);
+
                 printf("Enter pris: ");
-                gets(tempString);
-                nyVara.pris = strtof(tempString, NULL);
+                fgets(tempString,256,stdin);
+                varor->pris = atof(tempString);
+                
                 printf("Enter volym: ");
-                gets(tempString);
-                nyVara.volym = strtof(tempString, NULL);
+                fgets(tempString,256,stdin);
+                varor->volym = atof(tempString);
+                
                 printf("Enter typ: ");
-                gets(nyVara.typ);
+                fgets(tempString,256,stdin);
+                strcpy(varor->typ,tempString);
+                
                 printf("Enter stil: ");
-                gets(nyVara.stil);
+                fgets(tempString,256,stdin);
+                strcpy(varor->stil,tempString);
+                
                 printf("Enter forpackning: ");
-                gets(nyVara.forpackning);
+                fgets(tempString,256,stdin);
+                strcpy(varor->forpackning,tempString);
+                
                 printf("Enter land: ");
-                gets(nyVara.land);
+                fgets(tempString,256,stdin);
+                strcpy(varor->land,tempString);
+                
                 printf("Enter producent: ");
-                gets(nyVara.producent);
+                fgets(tempString,256,stdin);
+                strcpy(varor->producent,tempString);
+                
                 printf("Enter alkoholhalt: ");
-                gets(tempString);
-                nyVara.alkoholhalt = strtof(tempString, NULL);
+                fgets(tempString,256,stdin);
+                varor->alkoholhalt = atof(tempString);
 
                 printf("\n\nYou have added: \n");
                 printf("varunummer: %d\nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
-                nyVara.varunummer, nyVara.namn, nyVara.pris, nyVara.volym, 
-                nyVara.typ, nyVara.stil, nyVara.forpackning, nyVara.land, nyVara.producent, nyVara.alkoholhalt);
+                varor->varunummer,varor->namn,varor->pris,varor->volym,varor->typ,
+                varor->stil,varor->forpackning,varor->land,varor->producent,varor->alkoholhalt);
                 break;
             case 4:
                 printf("4Not implemented\n");

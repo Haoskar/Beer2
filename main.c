@@ -14,7 +14,7 @@ int isInt(char string[]){
 
 int main (void) {
 
-    Vara varor = calloc(100,sizeof(Vara));
+    Vara *varor = calloc(100,sizeof(Vara));
     bool validInput;
     char testString[20]; 
     char* end;

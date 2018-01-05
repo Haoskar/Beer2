@@ -23,7 +23,7 @@ int main (void) {
     int v;
     char tempString[100];
     float tempFloat;
-   
+    varor = Read();
     while(true){
         
         printf("\n---------------------------------------------------------\n");
@@ -50,7 +50,7 @@ int main (void) {
         switch(option){
             case 1:
                 printf("1Not implemented\n");
-                varor = Read();
+                printf("%i %s %f %f %s %s %s %s %s %f\n\n",varor->varunummer,varor->namn,varor->pris,varor->volym,varor->typ,varor->stil,varor->forpackning,varor->land,varor->producent,varor->alkoholhalt);
                 break;
             case 2:
                 printf("2Not implemented\n");

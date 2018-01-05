@@ -1,4 +1,4 @@
-struct Vara{
+typedef struct vara{
     int varunummer;
     char namn[100];
     float pris;
@@ -9,4 +9,4 @@ struct Vara{
     char land[20];
     char producent[50];
     float alkoholhalt;
-};
+}Vara;

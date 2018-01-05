@@ -179,8 +179,6 @@ int compare(Vara *elem1, Vara *elem2)
       return 0;
 }
 
-//funkar nästan. skriver ut varan med lägst 
-
 void sort_by_varunummer(){      
     Vara *products = calloc(100,sizeof(Vara));
     Vara *start_of_products = products;

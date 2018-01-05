@@ -30,6 +30,7 @@ int main (void) {
   tok = strtok(oneline, delim);
   while (tok != NULL) {
     printf("%s\n", tok);
+    
     tok = strtok(NULL, delim);
   }
 

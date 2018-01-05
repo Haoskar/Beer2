@@ -3,11 +3,8 @@
 #include <stdlib.h>
 #include "structinfo.h"
 
-Vara *envara = calloc(100,sizeof(Vara));
-
-
 int main (void) {
-
+  Vara *varapointer = calloc(100,sizeof(Vara));
   char *oneline, *tok, *fitem;
   char envara[256];
   char delim[] = ",";
@@ -15,8 +12,7 @@ int main (void) {
 
  // printf("Name the first item: ");
   //fgets(fitem, 20, stdin);
-  
-  struct Vara cider;
+
 
   FILE *fp;
   

@@ -16,6 +16,10 @@ typedef struct Vara{
 } Vara;
 
 Vara *envara = calloc(100,sizeof(Vara));
+
+
+
+
 int main (void) {
 
   char *oneline, *tok, *fitem;
@@ -24,9 +28,12 @@ int main (void) {
   
   printf("Name the first item: ");
   fgets(fitem, 20, stdin);
+  
+  struct Vara cider[10];
+  struct Vara *ptr;
+  ptr = &cider;
 
-
-
+  int counter = 0;
 
   FILE *fp;
   

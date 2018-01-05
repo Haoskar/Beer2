@@ -5,6 +5,8 @@
 #include "read_one_lineRob.c"
 #include "structinfo.h"
 
+typedef int (*compfn)(const void*, const void*);
+
 int isInt(char string[]){
     for(int i = 0; i < strlen(string) - 1; i++){
         if(!isdigit(string[i]) || string[i] == 0)
@@ -12,7 +14,9 @@ int isInt(char string[]){
     } 
     return 1;
 }
+void sort_by_varunummer();
 void search_varunummer(); //<- behövs
+int  compare(Vara *, Vara *);
 
 //fixa en is_float funktion 
 int main (void) {
@@ -55,8 +59,9 @@ int main (void) {
 
         switch(option){
             case 1:
-                printf("1Not implemented\n");
-                printf("%i %s %f %f %s %s %s %s %s %f\n\n",products->varunummer,products->namn,products->pris,products->volym,products->typ,products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
+                //printf("1Not implemented\n");
+                //printf("%i %s %f %f %s %s %s %s %s %f\n\n",products->varunummer,products->namn,products->pris,products->volym,products->typ,products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
+                sort_by_varunummer();
                 break;
             case 2:
                 printf("2Not implemented\n");
@@ -160,4 +165,34 @@ void search_varunummer(char *search_word){
     }
     if(!match_found)
         printf("\nThe number %s did not match any varunummer", search_word);
+}
+
+int compare(Vara *elem1, Vara *elem2)
+{
+   if ( elem1->varunummer < elem2->varunummer)
+      return -1;
+
+   else if (elem1->varunummer > elem2->varunummer)
+      return 1;
+
+   else
+      return 0;
+}
+
+//funkar nästan. skriver ut varan med lägst 
+
+void sort_by_varunummer(){      
+    Vara *products = calloc(100,sizeof(Vara));
+    Vara *start_of_products = products;
+    products = Read();
+
+    qsort((void *)products, 16, sizeof(Vara), compare); //ändra 16
+    //products = start_of_products;
+    for(int i = 0; i < 16; i++){
+        printf("varunummer: %d\nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
+        products->varunummer,products->namn,products->pris,products->volym,products->typ,
+        products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
+        printf("--------------------------------------\n");
+        products++;
+    }
 }

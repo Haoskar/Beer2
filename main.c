@@ -12,8 +12,9 @@ int isInt(char string[]){
     } 
     return 1;
 }
+void search_varunummer(); //<- behövs
 
-//fixa en is_float funktion
+//fixa en is_float funktion 
 int main (void) {
 
     Vara *products = calloc(100,sizeof(Vara));
@@ -112,8 +113,13 @@ int main (void) {
                 products->varunummer,products->namn,products->pris,products->volym,products->typ,
                 products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
                 break;
-            case 4:
-                printf("4Not implemented\n");
+            case 4: //hakar ibland upp sig
+                char *search_word = "9";
+                printf("\nVarunummer to search: ");
+                fgets(search_word,20, stdin);
+                search_word[strlen(search_word) - 1] = '\0';                //removes newline char
+                
+                search_varunummer(search_word);
                 break;
             case 5:
                 printf("5Not implemented\n");
@@ -128,4 +134,30 @@ int main (void) {
         }
     }
 
+}
+
+void search_varunummer(char *search_word){
+    char *end;
+    char temporary_string[10];
+    bool match_found = false;
+
+    Vara *products = calloc(100,sizeof(Vara));
+    Vara *start_of_products = products;
+    products = Read();
+
+    for(int i = 0; i < 16; i++){//ändra 16 till något bättre
+        sprintf(temporary_string, "%d", products->varunummer);  //convert current structs varunummer to string
+        //printf("\n%s", temporary_string); writes every varonummer that gets checked
+        if (strcmp(search_word, temporary_string) == 0) {       //compare strings
+            printf("\n%s, has the foloing information: \nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
+            search_word, products->namn,products->pris,products->volym,products->typ,
+            products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt); //horrendous printf
+            match_found = true;
+           break;
+        }  
+        else
+            products++;     //move over to next struct
+    }
+    if(!match_found)
+        printf("\nThe number %s did not match any varunummer", search_word);
 }

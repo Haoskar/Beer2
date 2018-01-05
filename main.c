@@ -16,15 +16,16 @@ int main (void) {
 
     Vara *products = calloc(100,sizeof(Vara));
     Vara *start_of_products = products;
-    bool validInput;
-    char testString[20]; 
+    bool valid_input;
+    char test_string[20]; 
     char* end;
     int option;
-    Vara nyVara;
-    int v;
     char tempString[256];
-    float tempFloat;
+    //läs in varor från varor.csv till products arrayen
     products = Read();
+    //Göra så products stå på korekt index
+    
+
     while(true){
         
         printf("\n---------------------------------------------------------\n");
@@ -36,25 +37,21 @@ int main (void) {
         printf("6. Quit\n\n");
 
         option = 0;
-        validInput = false;
+        valid_input = false;
         do{
             printf("Enter a option (1-6): ");
-            fgets(testString, 20, stdin);
-            if(testString[0] == '\n')
-                validInput = false;
+            fgets(test_string, 20, stdin);
+            if(test_string[0] == '\n')
+                valid_input = false;
             else
-                validInput = isInt(testString);
-        }while(!validInput);
+                valid_input = isInt(test_string);
+        }while(!valid_input);
 
-        option = strtol(testString, &end, 10);
+        option = strtol(test_string, &end, 10);
 
         switch(option){
             case 1:
                 printf("1Not implemented\n");
-                for(int i = 0; i < 16; i++){
-                printf("%i %s %f %f %s %s %s %s %s %f\n\n",products->varunummer,products->namn,products->pris,products->volym,products->typ,products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
-                products++;
-                }
                 break;
             case 2:
                 printf("2Not implemented\n");

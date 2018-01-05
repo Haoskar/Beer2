@@ -59,7 +59,7 @@ int main (void) {
     varapointer->alkoholhalt = atof(tok);
     tok = strtok(NULL, delim);
     
-    printf("%i %s %f %f %s %s %s %s %s %f\n",varapointer->varunummer,varapointer->namn,varapointer->pris,varapointer->volym,varapointer->typ,varapointer->stil,varapointer->forpackning,varapointer->land,varapointer->producent,varapointer->alkoholhalt);
+    printf("%i %s %f %f %s %s %s %s %s %f\n\n",varapointer->varunummer,varapointer->namn,varapointer->pris,varapointer->volym,varapointer->typ,varapointer->stil,varapointer->forpackning,varapointer->land,varapointer->producent,varapointer->alkoholhalt);
     varapointer++;
   free(oneline); free(tok);
 }

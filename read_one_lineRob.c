@@ -15,7 +15,7 @@ typedef struct Vara{
     float alkoholhalt;
 } Vara;
 
-
+Vara *envara = calloc(100,sizeof(Vara);
 int main (void) {
 
   char *oneline, *tok, *fitem;

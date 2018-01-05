@@ -50,7 +50,10 @@ int main (void) {
         switch(option){
             case 1:
                 printf("1Not implemented\n");
+                for(int i = 0; i < 100; i++){
                 printf("%i %s %f %f %s %s %s %s %s %f\n\n",varor->varunummer,varor->namn,varor->pris,varor->volym,varor->typ,varor->stil,varor->forpackning,varor->land,varor->producent,varor->alkoholhalt);
+                varor++;
+                }
                 break;
             case 2:
                 printf("2Not implemented\n");

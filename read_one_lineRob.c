@@ -8,7 +8,7 @@ Vara *Read (void) {
   char *oneline, *tok, *fitem;
   char envara[256];
   char delim[] = ",";
-  int nr_records = 0;
+  Vara *startvara = varapointer;
   //char stringArray[11][];
 
  // printf("Name the first item: ");
@@ -63,6 +63,7 @@ Vara *Read (void) {
     varapointer++;
   free(oneline); free(tok);
 }
+  varapointer = startvara;
   fclose(fp);
 return varapointer;
 }

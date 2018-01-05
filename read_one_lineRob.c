@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "structinfo.h"
 
-int main (void) {
+Vara *Read (void) {
   Vara *varapointer = calloc(100,sizeof(Vara));
   char *oneline, *tok, *fitem;
   char envara[256];
@@ -64,5 +64,5 @@ int main (void) {
   free(oneline); free(tok);
 }
   fclose(fp);
-
+return varapointer;
 }

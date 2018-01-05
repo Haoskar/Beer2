@@ -65,6 +65,7 @@ int main (void) {
                 printf("\nEnter varunummer: ");
                 fgets(tempString,256,stdin);
                 int i = 0;
+                //en funktion som tarbort newline tecknet och ersätter med \0
                 while(tempString[i] != '\n')
                     i++;
                 tempString[i--] = '\0';

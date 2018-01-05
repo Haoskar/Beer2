@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "structinfo.h"
 
-typedef struct Vara{
+struct Vara{
     int varunummer;
     char namn[100];
     float pris;
@@ -13,9 +14,9 @@ typedef struct Vara{
     char land[20];
     char producent[50];
     float alkoholhalt;
-} Vara;
+};
 
-Vara *envara = calloc(100,sizeof(Vara));
+//Vara *envara = calloc(100,sizeof(Vara));
 
 
 int main (void) {
@@ -23,15 +24,12 @@ int main (void) {
   char *oneline, *tok, *fitem;
   char envara[256];
   char delim[] = ",";
-  
+  //char stringArray[11][];
+
   printf("Name the first item: ");
   fgets(fitem, 20, stdin);
   
-  struct Vara cider[10];
-  struct Vara *ptr;
-  ptr = &cider;
-
-  int counter = 0;
+  struct Vara cider;
 
   FILE *fp;
   

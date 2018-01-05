@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-struct Vara{
+typedef struct Vara{
     int varunummer;
     char namn[100];
     float pris;
@@ -13,7 +13,7 @@ struct Vara{
     char land[20];
     char producent[50];
     float alkoholhalt;
-};
+} Vara;
 
 
 int main (void) {

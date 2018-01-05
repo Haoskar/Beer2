@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "structinfo.h"
+#include "read_one_lineRob.c"
 
 int isInt(char string[]){
     for(int i = 0; i < strlen(string) - 1; i++){
@@ -24,7 +25,8 @@ int main (void) {
     //läs in varor från varor.csv till products arrayen
     products = Read();
     //Göra så products stå på korekt index
-    
+    while(products->varunummer != 0)
+    products++;
 
     while(true){
         
@@ -52,6 +54,7 @@ int main (void) {
         switch(option){
             case 1:
                 printf("1Not implemented\n");
+                printf("%i %s %f %f %s %s %s %s %s %f\n\n",products->varunummer,products->namn,products->pris,products->volym,products->typ,products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
                 break;
             case 2:
                 printf("2Not implemented\n");
@@ -60,6 +63,10 @@ int main (void) {
                 //Varunummer
                 printf("\nEnter varunummer: ");
                 fgets(tempString,256,stdin);
+                int i = 0;
+                while(tempString[i] != '\n')
+                    i++
+                tempString[i] = 
                 products->varunummer = atoi(tempString);
 
                 printf("Enter namn: ");

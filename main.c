@@ -13,6 +13,7 @@ int isInt(char string[]){
     return 1;
 }
 
+//fixa en is_float funktion
 int main (void) {
 
     Vara *products = calloc(100,sizeof(Vara));
@@ -66,7 +67,7 @@ int main (void) {
                 int i = 0;
                 while(tempString[i] != '\n')
                     i++;
-                tempString[i] = '\0';
+                tempString[i--] = '\0';
                 products->varunummer = atoi(tempString);
 
                 printf("Enter namn: ");

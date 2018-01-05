@@ -4,19 +4,6 @@
 #include <stdbool.h>
 #include "structinfo.h"
 
-struct Vara{
-    int varunummer;
-    char namn[100];
-    float pris;
-    float volym;
-    char typ[100];
-    char stil[100];
-    char forpackning[20];
-    char land[20];
-    char producent[50];
-    float alkoholhalt;
-};
-
 int isInt(char string[]){
     for(int i = 0; i < strlen(string) - 1; i++){
         if(!isdigit(string[i]) || string[i] == 0)
@@ -27,11 +14,12 @@ int isInt(char string[]){
 
 int main (void) {
 
+    Vara varor = calloc(100,sizeof(Vara));
     bool validInput;
     char testString[20]; 
     char* end;
     int option;
-    struct Vara nyVara;
+    Vara nyVara;
     int v;
     char tempString[100];
     float tempFloat;
@@ -62,6 +50,7 @@ int main (void) {
         switch(option){
             case 1:
                 printf("1Not implemented\n");
+                varor = Read();
                 break;
             case 2:
                 printf("2Not implemented\n");

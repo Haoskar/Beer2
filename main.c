@@ -2,8 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "structinfo.h"
 #include "read_one_lineRob.c"
+#include "structinfo.h"
 
 int isInt(char string[]){
     for(int i = 0; i < strlen(string) - 1; i++){
@@ -65,8 +65,8 @@ int main (void) {
                 fgets(tempString,256,stdin);
                 int i = 0;
                 while(tempString[i] != '\n')
-                    i++
-                tempString[i] = 
+                    i++;
+                tempString[i] = '\0';
                 products->varunummer = atoi(tempString);
 
                 printf("Enter namn: ");

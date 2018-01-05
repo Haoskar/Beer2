@@ -1,3 +1,6 @@
+#ifndef _STRUCTH_
+#define _STRUCTH_
+
 typedef struct vara{
     int varunummer;
     char namn[100];
@@ -10,3 +13,5 @@ typedef struct vara{
     char producent[50];
     float alkoholhalt;
 }Vara;
+
+#endif

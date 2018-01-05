@@ -20,8 +20,9 @@ int main (void) {
     int option;
    
     while(true){
-    
-        printf("\n1. Display contents sorted by varunummer\n");
+        
+        printf("\n---------------------------------------------------------\n");
+        printf("1. Display contents sorted by varunummer\n");
         printf("2. Display contents sorted by namn\n");
         printf("3. Add a product\n");
         printf("4. Search\n");
@@ -31,7 +32,7 @@ int main (void) {
         option = 0;
         validInput = false;
         do{
-            printf("Enter a option (1-6): ");//have tested a maximum of 1 500 000 rows, taking up ~ 55 Mb of space
+            printf("Enter a option (1-6): ");
             fgets(testString, 20, stdin);
             if(testString[0] == '\n')
                 validInput = false;

@@ -23,7 +23,7 @@ int main (void) {
     int v;
     char tempString[100];
     float tempFloat;
-    *varor = Read();
+    varor = Read();
     while(true){
         
         printf("\n---------------------------------------------------------\n");

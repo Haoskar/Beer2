@@ -1,26 +1,18 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 int main (void) {
-   char buffer[512];
-   printf("Meny: skriv det nummer occh tryck enter för att gå till det\n1.Lista innehåll\n2.Lägg till ny vara\n3.Sök\nSpara till fil");
-   fgets(buffer,511,stdin);
-   switch(sscanf(buffer,"%i")){
-    case 1:
-   //Lägg till nya varor
-        printf("Val 1");
-    break;
-    case 2:
-   //Sök
-        printf("val 2");
-    break;
-    case 3:
-   //spara till fil
-        printf("Val 3");
-    break;
-    default:
-        printf("Fel!!");
-    break;
-    }
+    bool validInput = false;
+    char testString[20]; 
+    
+    do{
+        printf("Enter a option (1-6): ");//have tested a maximum of 1 500 000 rows, taking up ~ 55 Mb of space
+        fgets(testString, 20, stdin);
+        if(testString[0] == '\n')
+            validInput = false;
+        else
+            validInput = isInt(testString);
+    }while(!validInput);
 }

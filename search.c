@@ -24,7 +24,9 @@ int main (void) {
         sprintf(temporary_string, "%d", products->varunummer);  //convert current structs varunummer to string
         //printf("\n%s", temporary_string);
         if (strcmp(search_word, temporary_string) == 0) {       //compare strings
-            printf("\n%s, has the name %s", search_word, products->namn);
+            printf("\n%s, has the foloing information: \nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
+                search_word, products->namn,products->pris,products->volym,products->typ,
+                products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
             match_found = true;
             break;
         }  

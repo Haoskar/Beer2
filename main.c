@@ -16,6 +16,8 @@ int isInt(char string[]){
 }
 void sort_by_varunummer();
 void search_varunummer(); //<- behövs
+void sort_by_namn();
+static int compare_string (const void * a, const void * b);
 int  compare(Vara *, Vara *);
 
 //fixa en is_float funktion 
@@ -64,7 +66,8 @@ int main (void) {
                 sort_by_varunummer();
                 break;
             case 2:
-                printf("2Not implemented\n");
+                //printf("2Not implemented\n");
+                sort_by_namn();
                 break;    
             case 3:
                 //Varunummer
@@ -179,13 +182,32 @@ int compare(Vara *elem1, Vara *elem2)
       return 0;
 }
 
+static int compare_string (Vara *elem1, Vara *elem2)
+{
+    return strcmp (elem1->namn, elem2->namn);
+}
+
 void sort_by_varunummer(){      
     Vara *products = calloc(100,sizeof(Vara));
     Vara *start_of_products = products;
     products = Read();
 
-    qsort((void *)products, 16, sizeof(Vara), compare); //ändra 16
-    //products = start_of_products;
+    qsort((void *)products, 16, sizeof(Vara), compare); //Ändra 16
+    for(int i = 0; i < 16; i++){
+        printf("varunummer: %d\nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
+        products->varunummer,products->namn,products->pris,products->volym,products->typ,
+        products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
+        printf("--------------------------------------\n");
+        products++;
+    }
+}
+
+void sort_by_namn(){
+    Vara *products = calloc(100,sizeof(Vara));
+    Vara *start_of_products = products;
+    products = Read();
+
+    qsort(products, 16, sizeof(Vara),compare_string); //Ändra 16
     for(int i = 0; i < 16; i++){
         printf("varunummer: %d\nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
         products->varunummer,products->namn,products->pris,products->volym,products->typ,

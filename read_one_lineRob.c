@@ -9,10 +9,6 @@ Vara *Read (void) {
   char envara[256];
   char delim[] = ",";
   Vara *startvara = varapointer;
-  //char stringArray[11][];
-
- // printf("Name the first item: ");
-  //fgets(fitem, 20, stdin);
 
 
   FILE *fp;
@@ -24,7 +20,6 @@ Vara *Read (void) {
 
   while(fgets(envara, 256, fp) !=NULL){
   envara[strlen(envara) - 1] = '\0'; // Ta bort radslutstecknet
-  //printf("En rad; %s\n", envara);
 
   oneline = strdup(envara);
 
@@ -59,7 +54,6 @@ Vara *Read (void) {
     varapointer->alkoholhalt = atof(tok);
     tok = strtok(NULL, delim);
     
-    //printf("%i %s %f %f %s %s %s %s %s %f\n\n",varapointer->varunummer,varapointer->namn,varapointer->pris,varapointer->volym,varapointer->typ,varapointer->stil,varapointer->forpackning,varapointer->land,varapointer->producent,varapointer->alkoholhalt);
     varapointer++;
   free(oneline); free(tok);
 }

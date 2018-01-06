@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include "read_one_lineRob.c"
 #include "structinfo.h"
+#include "savefile.c"
 
 typedef int (*compfn)(const void*, const void*);
 int number_of_products = 16;//Ändra detta

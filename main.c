@@ -191,7 +191,8 @@ void sort_by_varunummer(){      //ev. slå ihop sorteringsfunkjtionerna
 
     qsort((void *)products, number_of_products, sizeof(Vara), compare); //Ändra 16
     for(int i = 0; i < number_of_products; i++){
-        printf("varunummer: %d\nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
+        //Använd %0.2f för att få två decimaler och så att float inte tar och visra sina felaktigheter :D
+        printf("varunummer: %d\nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
         products->varunummer,products->namn,products->pris,products->volym,products->typ,
         products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
         printf("--------------------------------------\n");
@@ -206,7 +207,8 @@ void sort_by_namn(){
 
     qsort(products, number_of_products, sizeof(Vara),compare_string); //Ändra 16
     for(int i = 0; i < number_of_products; i++){
-        printf("varunummer: %d\nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
+        //Använd %0.2f när du printar för att få två decimaler och så att float inte tar och visra sina felaktigheter :D
+        printf("varunummer: %d\nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
         products->varunummer,products->namn,products->pris,products->volym,products->typ,
         products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
         printf("--------------------------------------\n");

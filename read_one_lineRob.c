@@ -35,7 +35,7 @@ Vara *Read (void) {
     strcpy(varapointer->namn,tok);
     tok = strtok(NULL, delim);
    
-    varapointer->pris = atof(tok);
+    varapointer->pris = strtof(tok,NULL);
     tok = strtok(NULL, delim);
    
     varapointer->volym = atof(tok);

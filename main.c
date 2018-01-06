@@ -18,7 +18,7 @@ int isInt(char string[]){
 void sort_by_varunummer();
 void search_varunummer(); //<- behövs
 void sort_by_namn();
-static int compare_string (const void * a, const void * b);
+static int compare_string (Vara * a, Vara * b);
 int  compare(Vara *, Vara *);
 
 //fixa en is_float funktion 
@@ -59,7 +59,7 @@ int main (void) {
         }while(!valid_input);
 
         option = strtol(test_string, &end, 10);
-
+        char *search_word = "9";
         switch(option){
             case 1:
                 //printf("1Not implemented\n");
@@ -120,7 +120,7 @@ int main (void) {
                 products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
                 break;
             case 4: //hakar ibland upp sig
-                char *search_word = "9";
+
                 printf("\nVarunummer to search: ");
                 fgets(search_word,20, stdin);
                 search_word[strlen(search_word) - 1] = '\0';                //removes newline char

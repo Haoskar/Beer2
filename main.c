@@ -187,7 +187,7 @@ static int compare_string (Vara *elem1, Vara *elem2)
     return strcmp (elem1->namn, elem2->namn);
 }
 
-void sort_by_varunummer(){      
+void sort_by_varunummer(){      //ev. slå ihop sorteringsfunkjtionerna
     Vara *products = calloc(100,sizeof(Vara));
     Vara *start_of_products = products;
     products = Read();

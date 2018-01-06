@@ -6,6 +6,7 @@
 #include "structinfo.h"
 
 typedef int (*compfn)(const void*, const void*);
+int number_of_products = 16;//Ändra detta
 
 int isInt(char string[]){
     for(int i = 0; i < strlen(string) - 1; i++){
@@ -130,7 +131,7 @@ int main (void) {
                 search_varunummer(search_word);
                 break;
             case 5:
-                printf("5Not implemented\n");
+
                 break;
             case 6:
                 printf("Good bye!\n");//Implement save to file
@@ -153,10 +154,9 @@ void search_varunummer(char *search_word){
     Vara *start_of_products = products;
     products = Read();
 
-    for(int i = 0; i < 16; i++){//ändra 16 till något bättre
-        sprintf(temporary_string, "%d", products->varunummer);  //convert current structs varunummer to string
-        //printf("\n%s", temporary_string); writes every varonummer that gets checked
-        if (strcmp(search_word, temporary_string) == 0) {       //compare strings
+    for(int i = 0; i < number_of_products; i++){
+        sprintf(temporary_string, "%d", products->varunummer);                  //convert current structs varunummer to string
+        if (strcmp(search_word, temporary_string) == 0) {                       //compare strings
             printf("\n%s, has the foloing information: \nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
             search_word, products->namn,products->pris,products->volym,products->typ,
             products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt); //horrendous printf
@@ -192,8 +192,8 @@ void sort_by_varunummer(){      //ev. slå ihop sorteringsfunkjtionerna
     Vara *start_of_products = products;
     products = Read();
 
-    qsort((void *)products, 16, sizeof(Vara), compare); //Ändra 16
-    for(int i = 0; i < 16; i++){
+    qsort((void *)products, number_of_products, sizeof(Vara), compare); //Ändra 16
+    for(int i = 0; i < number_of_products; i++){
         printf("varunummer: %d\nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
         products->varunummer,products->namn,products->pris,products->volym,products->typ,
         products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
@@ -207,8 +207,8 @@ void sort_by_namn(){
     Vara *start_of_products = products;
     products = Read();
 
-    qsort(products, 16, sizeof(Vara),compare_string); //Ändra 16
-    for(int i = 0; i < 16; i++){
+    qsort(products, number_of_products, sizeof(Vara),compare_string); //Ändra 16
+    for(int i = 0; i < number_of_products; i++){
         printf("varunummer: %d\nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
         products->varunummer,products->namn,products->pris,products->volym,products->typ,
         products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);

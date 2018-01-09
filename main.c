@@ -63,62 +63,70 @@ int main (void) {
         char *search_word = "9";
         switch(option){
             case 1:
-                //printf("1Not implemented\n");
-                //printf("%i %s %f %f %s %s %s %s %s %f\n\n",products->varunummer,products->namn,products->pris,products->volym,products->typ,products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
                 sort_by_varunummer();
                 break;
             case 2:
-                //printf("2Not implemented\n");
                 sort_by_namn();
                 break;    
             case 3:
                 //Varunummer
                 printf("\nEnter varunummer: ");
                 fgets(tempString,256,stdin);
-                //en funktion som tarbort newline tecknet och ersätter med \0
+                tempString[strlen(tempString) - 1] = '\0'; //en funktion som tarbort newline tecknet och ersätter med \0
                 printf("%i",strlen(tempString));
                 products->varunummer = atoi(tempString);
 
                 printf("Enter namn: ");
                 fgets(tempString,256,stdin);
+                tempString[strlen(tempString) - 1] = '\0';
+                printf("%i",strlen(tempString));
                 strcpy(products->namn,tempString);
 
                 printf("Enter pris: ");
                 fgets(tempString,256,stdin);
+                tempString[strlen(tempString) - 1] = '\0';
                 products->pris = atof(tempString);
                 
                 printf("Enter volym: ");
                 fgets(tempString,256,stdin);
+                tempString[strlen(tempString) - 1] = '\0';
                 products->volym = atof(tempString);
                 
                 printf("Enter typ: ");
                 fgets(tempString,256,stdin);
+                tempString[strlen(tempString) - 1] = '\0';
                 strcpy(products->typ,tempString);
                 
                 printf("Enter stil: ");
                 fgets(tempString,256,stdin);
+                tempString[strlen(tempString) - 1] = '\0';
                 strcpy(products->stil,tempString);
                 
                 printf("Enter forpackning: ");
                 fgets(tempString,256,stdin);
+                tempString[strlen(tempString) - 1] = '\0';
                 strcpy(products->forpackning,tempString);
                 
                 printf("Enter land: ");
                 fgets(tempString,256,stdin);
+                tempString[strlen(tempString) - 1] = '\0';
                 strcpy(products->land,tempString);
                 
                 printf("Enter producent: ");
                 fgets(tempString,256,stdin);
+                tempString[strlen(tempString) - 1] = '\0';
                 strcpy(products->producent,tempString);
                 
                 printf("Enter alkoholhalt: ");
                 fgets(tempString,256,stdin);
+                tempString[strlen(tempString) - 1] = '\0';
                 products->alkoholhalt = atof(tempString);
 
                 printf("\n\nYou have added: \n");
                 printf("varunummer: %d\nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
                 products->varunummer,products->namn,products->pris,products->volym,products->typ,
                 products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
+                //printf("hej");
                 break;
             case 4: //hakar ibland upp sig
 

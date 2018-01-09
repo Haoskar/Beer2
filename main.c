@@ -21,7 +21,7 @@ void search_varunummer(); //<- behövs
 void sort_by_namn();
 static int compare_string (Vara * a, Vara * b);
 int  compare(Vara *, Vara *);
-Vara *products, *start_of_products;
+Vara *products, *start_of_products,*end_of_products;
 
 
 
@@ -37,10 +37,12 @@ int main (void) {
     //läs in varor från varor.csv till products arrayen
     products = Read();
     start_of_products = products;
+    end_of_products = start_of_products;
 
     while(products->varunummer != 0){
-        products++;
+        end_of_products++;
         number_of_products++;
+        products++;
     };
     //Göra så products stå på korekt index
     
@@ -77,8 +79,6 @@ int main (void) {
                 break;    
             case 3:
                 //Varunummer
-                while(products->varunummer != 0)
-                    products++;
 
                 printf("\nEnter varunummer: ");
                 fgets(tempString,256,stdin);
@@ -137,6 +137,7 @@ int main (void) {
                 products->varunummer,products->namn,products->pris,products->volym,products->typ,
                 products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
                 number_of_products++;
+                end_of_products++;
                 printf("\n--\n");
                 
                 for(products = start_of_products; products < &start_of_products[number_of_products]; products++){
@@ -157,7 +158,7 @@ int main (void) {
                 search_varunummer(search_word);
                 break;
             case 5:
-
+                save_to_file(products,)
                 break;
             case 6:
                 printf("Good bye!\n");//Implement save to file

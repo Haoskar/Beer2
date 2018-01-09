@@ -168,6 +168,7 @@ int main (void) {
                 printf("Something went wrong");
 
         }
+        printf("Funkar fint");
     }
 
 }

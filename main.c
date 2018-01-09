@@ -171,7 +171,7 @@ int main (void) {
                 fgets(search_word,20, stdin);
                 search_word[strlen(search_word) - 1] = '\0';                //removes newline char
                 
-                search_varunummer(search_word);
+                search_varunummer(search_word, products, number_of_products, start_of_products);
                 break;
             case 5:
 

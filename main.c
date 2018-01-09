@@ -7,7 +7,6 @@
 #include "savefile.c"
 
 typedef int (*compfn)(const void*, const void*);
-int number_of_products = 0;
 
 int isInt(char string[]){
     for(int i = 0; i < strlen(string) - 1; i++){
@@ -22,7 +21,7 @@ void sort_by_namn();
 static int compare_string (Vara * a, Vara * b);
 int  compare(Vara *, Vara *);
 Vara *products, *start_of_products,*end_of_products;
-
+int number_of_products = 0;
 
 
 //fixa en is_float funktion 
@@ -158,7 +157,7 @@ int main (void) {
                 search_varunummer(search_word);
                 break;
             case 5:
-                save_to_file(products,)
+                save_to_file(products,number_of_products,tempString);
                 break;
             case 6:
                 printf("Good bye!\n");//Implement save to file

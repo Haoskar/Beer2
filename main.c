@@ -35,8 +35,7 @@ int main (void) {
     //läs in varor från varor.csv till products arrayen
     products = Read();
     //Göra så products stå på korekt index
-    while(products->varunummer != 0)
-    products++;
+    
 
     while(true){
         
@@ -70,6 +69,9 @@ int main (void) {
                 break;    
             case 3:
                 //Varunummer
+                while(products->varunummer != 0)
+                    products++;
+
                 printf("\nEnter varunummer: ");
                 fgets(tempString,256,stdin);
                 tempString[strlen(tempString) - 1] = '\0'; //en funktion som tarbort newline tecknet och ersätter med \0
@@ -126,7 +128,17 @@ int main (void) {
                 printf("varunummer: %d\nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
                 products->varunummer,products->namn,products->pris,products->volym,products->typ,
                 products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
-                //printf("hej");
+                printf("\n--\n");
+                products = start_of_products;
+                for(int i = 0; i < number_of_products+1; i++){
+                    //Använd %0.2f när du printar för att få två decimaler och så att float inte tar och visra sina felaktigheter :D
+                    printf("varunummer: %d\nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
+                    products->varunummer,products->namn,products->pris,products->volym,products->typ,
+                    products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
+                    printf("--------------------------------------\n");
+                    products++;
+                }
+
                 break;
             case 4: //hakar ibland upp sig
 

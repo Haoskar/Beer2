@@ -86,7 +86,7 @@ int main (void) {
                 break;    
             case 3:
                 //Varunummer
-                products++;
+                products = end_of_products;
                 printf("\nEnter varunummer: ");
                 fgets(tempString,256,stdin);
                 tempString[strlen(tempString) - 1] = '\0'; //en funktion som tarbort newline tecknet och ersätter med \0
@@ -144,7 +144,7 @@ int main (void) {
                 products->varunummer,products->namn,products->pris,products->volym,products->typ,
                 products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
                 number_of_products++;
-                //end_of_products++;
+                end_of_products++;
                 printf("\n--\n");
                 
                 for(products = start_of_products; products < &start_of_products[number_of_products]; products++){

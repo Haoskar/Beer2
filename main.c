@@ -7,7 +7,7 @@
 #include "savefile.c"
 
 typedef int (*compfn)(const void*, const void*);
-int number_of_products = 16;//Ändra detta
+int number_of_products = 0;
 
 int isInt(char string[]){
     for(int i = 0; i < strlen(string) - 1; i++){
@@ -21,11 +21,14 @@ void search_varunummer(); //<- behövs
 void sort_by_namn();
 static int compare_string (Vara * a, Vara * b);
 int  compare(Vara *, Vara *);
+Vara *products, *start_of_products;
+
+
 
 //fixa en is_float funktion 
 int main (void) {
 
-    Vara *products = calloc(100,sizeof(Vara));
+    products = (Vara *) calloc(100,sizeof(Vara));
     bool valid_input;
     char test_string[20]; 
     char* end;
@@ -33,8 +36,12 @@ int main (void) {
     char tempString[256];
     //läs in varor från varor.csv till products arrayen
     products = Read();
-    Vara *start_of_products = products;
+    start_of_products = products;
 
+    while(products->varunummer != 0){
+        products++;
+        number_of_products++;
+    };
     //Göra så products stå på korekt index
     
 
@@ -131,16 +138,15 @@ int main (void) {
                 products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
                 number_of_products++;
                 printf("\n--\n");
-                products = start_of_products;
-                for(int i = 0; i < number_of_products; i++){
+                
+                for(products = start_of_products; products < &start_of_products[number_of_products]; products++){
                     //Använd %0.2f när du printar för att få två decimaler och så att float inte tar och visra sina felaktigheter :D
                     printf("varunummer: %d\nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
                     products->varunummer,products->namn,products->pris,products->volym,products->typ,
                     products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
                     printf("--------------------------------------\n");
-                    products++;
                 }
-
+                products = start_of_products;
                 break;
             case 4: //hakar ibland upp sig
 
@@ -167,14 +173,14 @@ int main (void) {
 
 void search_varunummer(char *search_word){
     char *end;
-    char temporary_string[10];
+    char temporary_string[20];
     bool match_found = false;
 
-    Vara *products = calloc(100,sizeof(Vara));
-    Vara *start_of_products = products;
-    products = Read();
+    //Vara *products = calloc(100,sizeof(Vara));
+    //Vara *start_of_products = products;
+    //products = Read();
 
-    for(int i = 0; i < number_of_products; i++){
+    for(products = start_of_products; products < &start_of_products[number_of_products]; products++){
         sprintf(temporary_string, "%d", products->varunummer);                  //convert current structs varunummer to string
         if (strcmp(search_word, temporary_string) == 0) {                       //compare strings
             printf("\n%s, has the foloing information: \nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
@@ -183,9 +189,8 @@ void search_varunummer(char *search_word){
             match_found = true;
            break;
         }  
-        else
-            products++;     //move over to next struct
     }
+    products = start_of_products;
     if(!match_found)
         printf("\nThe number %s did not match any varunummer", search_word);
 }
@@ -208,33 +213,27 @@ static int compare_string (Vara *elem1, Vara *elem2)
 }
 
 void sort_by_varunummer(){      //ev. slå ihop sorteringsfunkjtionerna
-    Vara *products = calloc(100,sizeof(Vara));
-    Vara *start_of_products = products;
-    products = Read();
 
     qsort((void *)products, number_of_products, sizeof(Vara), compare); //Ändra 16
-    for(int i = 0; i < number_of_products; i++){
+    for(products = start_of_products; products < &start_of_products[number_of_products]; products++){
         //Använd %0.2f för att få två decimaler och så att float inte tar och visra sina felaktigheter :D
         printf("varunummer: %d\nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
         products->varunummer,products->namn,products->pris,products->volym,products->typ,
         products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
         printf("--------------------------------------\n");
-        products++;
     }
+    products = start_of_products;
 }
 
 void sort_by_namn(){
-    Vara *products = calloc(100,sizeof(Vara));
-    Vara *start_of_products = products;
-    products = Read();
 
     qsort(products, number_of_products, sizeof(Vara),compare_string); //Ändra 16
-    for(int i = 0; i < number_of_products; i++){
+    for(products = start_of_products; products < &start_of_products[number_of_products]; products++){
         //Använd %0.2f när du printar för att få två decimaler och så att float inte tar och visra sina felaktigheter :D
         printf("varunummer: %d\nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
         products->varunummer,products->namn,products->pris,products->volym,products->typ,
         products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
         printf("--------------------------------------\n");
-        products++;
     }
+    products = start_of_products;
 }

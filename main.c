@@ -6,7 +6,7 @@
 #include "structinfo.h"
 #include "savefile.c"
 
-typedef int (*compfn)(const void*, const void*);
+
 
 int isInt(char string[]){
     for(int i = 0; i < strlen(string) - 1; i++){

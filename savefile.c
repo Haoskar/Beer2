@@ -4,6 +4,8 @@
 #include <stdbool.h>
 #include "structinfo.h"
 
+typedef int (*compfn)(const void*, const void*);
+
 void save_to_file(Vara *array_with_products,int number_of_products,char* file_name){
 
   FILE *fp;
@@ -64,7 +66,7 @@ static int compare_string (Vara *elem1, Vara *elem2)
 
 void sort_by_varunummer(Vara *products, int number_of_products,int compare, Vara *start_of_products){      //ev. slå ihop sorteringsfunkjtionerna
 
-    qsort((void *)products, number_of_products, sizeof(Vara), compare); //Ändra 16
+    qsort((void *)products, number_of_products, sizeof(Vara), (compfn)compare); //Ändra 16
     for(products = start_of_products; products < &start_of_products[number_of_products]; products++){
         //Använd %0.2f för att få två decimaler och så att float inte tar och visra sina felaktigheter :D
         printf("varunummer: %d\nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
@@ -77,7 +79,7 @@ void sort_by_varunummer(Vara *products, int number_of_products,int compare, Vara
 
 void sort_by_namn(Vara *products, int number_of_products,int compare_string, Vara *start_of_products){
 
-    qsort(products, number_of_products, sizeof(Vara),compare_string); //Ändra 16
+    qsort(products, number_of_products, sizeof(Vara), (compfn)compare_string); //Ändra 16
     for(products = start_of_products; products < &start_of_products[number_of_products]; products++){
         //Använd %0.2f när du printar för att få två decimaler och så att float inte tar och visra sina felaktigheter :D
         printf("varunummer: %d\nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 

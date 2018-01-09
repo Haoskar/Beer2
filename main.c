@@ -99,13 +99,11 @@ int main (void) {
                 printf("\nEnter varunummer: ");
                 fgets(tempString,256,stdin);
                 tempString[strlen(tempString) - 1] = '\0'; //en funktion som tarbort newline tecknet och ersätter med \0
-                printf("%i",strlen(tempString));
                 products->varunummer = atoi(tempString);
 
                 printf("Enter namn: ");
                 fgets(tempString,256,stdin);
                 tempString[strlen(tempString) - 1] = '\0';
-                printf("%i",strlen(tempString));
                 strcpy(products->namn,tempString);
 
                 printf("Enter pris: ");

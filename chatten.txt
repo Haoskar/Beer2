@@ -1,3 +1,12 @@
 Robert: hej oskar! här är vår chatt :)
 Oskar: Hejsan robert :D
 Robert: detta är sjukt användbart!
+System: Det som ska göras
+---------Att Göra----------
+-fixa buggar
+-fixa sökfunktion
+    -så den inte kraschar i mingw
+-fixa sorteringsfunktionen
+    -så den soretera innan när man inte lagt till en produkt
+-Testa inputs på lägg till vara
+-avkommenterta och komentera saker och ting

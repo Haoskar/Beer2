@@ -166,26 +166,6 @@ int main (void) {
                 break;
             case 5:
 
-                /*while(1){
-                    printf("Vad ska filen kallas: ");
-                    fgets(name_of_file_or_number, 512, stdin);
-                    //ta bort allt tomrum framför talen
-                    strcpy(name_of_file_or_number,trimwhitespace(name_of_file_or_number));
-                    //se så personern inte bara har tyrckt på enter eller att det är tom sträng
-                    if(strlen(name_of_file_or_number) == 1 || *name_of_file_or_number == 0)
-                        printf("du m%cste skriva ett filnamn\n",134);
-                    else{
-                        //name_of_file_or_number = strtok(name_of_file_or_number,"\n");
-                        name_of_file_or_number[strlen(name_of_file_or_number) - 1] = '\0';
-                        strcat(name_of_file_or_number,".txt");
-                        //se till så det inte är ett tomt namn
-                        if((skrivfil = fopen(name_of_file_or_number,"w")) == NULL)
-                            printf("Gick inte att %cpnna denna fil!\n",148);
-                        else
-				            break;
-                    }
-                }*/
-
                 do{
                     printf("Enter filename here: ");
                     fgets(fileName, 200, stdin);

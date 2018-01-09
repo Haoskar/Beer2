@@ -88,10 +88,10 @@ int main (void) {
         char *search_word = "9";
         switch(option){
             case 1:
-                sort_by_varunummer();
+                sort_by_varunummer(products,number_of_products,compare,start_of_products);
                 break;
             case 2:
-                sort_by_namn();
+                sort_by_namn(products, number_of_products, compare_string, start_of_products);
                 break;    
             case 3:
                 //Varunummer
@@ -212,69 +212,3 @@ int main (void) {
 
 }
 
-void search_varunummer(char *search_word){
-    char *end;
-    char temporary_string[20];
-    bool match_found = false;
-
-    //Vara *products = calloc(100,sizeof(Vara));
-    //Vara *start_of_products = products;
-    //products = Read();
-
-    for(products = start_of_products; products < &start_of_products[number_of_products]; products++){
-        sprintf(temporary_string, "%d", products->varunummer);                  //convert current structs varunummer to string
-        if (strcmp(search_word, temporary_string) == 0) {                       //compare strings
-            printf("\n%s, has the foloing information: \nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
-            search_word, products->namn,products->pris,products->volym,products->typ,
-            products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt); //horrendous printf
-            match_found = true;
-           break;
-        }  
-    }
-    products = start_of_products;
-    if(!match_found)
-        printf("\nThe number %s did not match any varunummer", search_word);
-}
-
-int compare(Vara *elem1, Vara *elem2)
-{
-   if ( elem1->varunummer < elem2->varunummer)
-      return -1;
-
-   else if (elem1->varunummer > elem2->varunummer)
-      return 1;
-
-   else
-      return 0;
-}
-
-static int compare_string (Vara *elem1, Vara *elem2)
-{
-    return strcmp (elem1->namn, elem2->namn);
-}
-
-void sort_by_varunummer(){      //ev. slå ihop sorteringsfunkjtionerna
-
-    qsort((void *)products, number_of_products, sizeof(Vara), compare); //Ändra 16
-    for(products = start_of_products; products < &start_of_products[number_of_products]; products++){
-        //Använd %0.2f för att få två decimaler och så att float inte tar och visra sina felaktigheter :D
-        printf("varunummer: %d\nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
-        products->varunummer,products->namn,products->pris,products->volym,products->typ,
-        products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
-        printf("--------------------------------------\n");
-    }
-    products = start_of_products;
-}
-
-void sort_by_namn(){
-
-    qsort(products, number_of_products, sizeof(Vara),compare_string); //Ändra 16
-    for(products = start_of_products; products < &start_of_products[number_of_products]; products++){
-        //Använd %0.2f när du printar för att få två decimaler och så att float inte tar och visra sina felaktigheter :D
-        printf("varunummer: %d\nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
-        products->varunummer,products->namn,products->pris,products->volym,products->typ,
-        products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
-        printf("--------------------------------------\n");
-    }
-    products = start_of_products;
-}

@@ -21,7 +21,7 @@ void save_to_file(Vara *array_with_products,int number_of_products,char* file_na
   printf("Du har sparat varorna till filen %s",file_name);
 }
 
-void search_varunummer(char *search_word){
+void search_varunummer(char *search_word,Vara *products, int number_of_products, Vara *start_of_products){
     char *end;
     char temporary_string[20];
     bool match_found = false;
@@ -62,7 +62,7 @@ static int compare_string (Vara *elem1, Vara *elem2)
     return strcmp (elem1->namn, elem2->namn);
 }
 
-void sort_by_varunummer(){      //ev. slå ihop sorteringsfunkjtionerna
+void sort_by_varunummer(Vara *products, int number_of_products,int compare, Vara *start_of_products){      //ev. slå ihop sorteringsfunkjtionerna
 
     qsort((void *)products, number_of_products, sizeof(Vara), compare); //Ändra 16
     for(products = start_of_products; products < &start_of_products[number_of_products]; products++){
@@ -75,7 +75,7 @@ void sort_by_varunummer(){      //ev. slå ihop sorteringsfunkjtionerna
     products = start_of_products;
 }
 
-void sort_by_namn(){
+void sort_by_namn(Vara *products, int number_of_products,int compare_string, Vara *start_of_products){
 
     qsort(products, number_of_products, sizeof(Vara),compare_string); //Ändra 16
     for(products = start_of_products; products < &start_of_products[number_of_products]; products++){

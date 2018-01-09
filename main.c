@@ -15,6 +15,15 @@ int isInt(char string[]){
     } 
     return 1;
 }
+
+int is_float(char string[]){
+    for(int i = 0; i < strlen(string) - 1; i++){
+        if(!isdigit(string[i]) || string[i] == 0)
+            if(string[i] != '.')
+                return 0;   
+    } 
+    return 1;
+}
 void sort_by_varunummer();
 void search_varunummer(); //<- behövs
 void sort_by_namn();
@@ -268,12 +277,4 @@ void sort_by_namn(){
         printf("--------------------------------------\n");
     }
     products = start_of_products;
-}
-
-char * trimwhitespace(char *str){
-  //se så det inte är någon mellanslag i 
-  while(isspace((unsigned char)*str)) str++;
-	//se så det inte är någon mellanslag i så fall retunera stringen
-  if(!(isspace((unsigned char)*str)))  
-    return str;
 }

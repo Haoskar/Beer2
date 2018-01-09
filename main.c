@@ -157,6 +157,24 @@ int main (void) {
                 search_varunummer(search_word);
                 break;
             case 5:
+                while(1){
+        printf("Vad ska filen kallas: ");
+		fgets(name_of_file_or_number, 512, stdin);
+		//ta bort allt tomrum framför talen
+		strcpy(name_of_file_or_number,trimwhitespace(name_of_file_or_number));
+		//se så personern inte bara har tyrckt på enter eller att det är tom sträng
+		if(strlen(name_of_file_or_number) == 1 || *name_of_file_or_number == 0)
+			printf("du m%cste skriva ett filnamn\n",134);
+		else{
+			name_of_file_or_number = strtok(name_of_file_or_number,"\n");
+			strcat(name_of_file_or_number,".txt");
+			//se till så det inte är ett tomt namn
+			if((skrivfil = fopen(name_of_file_or_number,"w")) == NULL)
+				printf("Gick inte att %cpnna denna fil!\n",148);
+			else
+				break;
+		}
+	}
                 save_to_file(products,number_of_products,tempString);
                 break;
             case 6:
@@ -237,4 +255,13 @@ void sort_by_namn(){
         printf("--------------------------------------\n");
     }
     products = start_of_products;
+}
+
+char *trimwhitespace(char *str)
+{
+  //se så det inte är någon mellanslag i 
+  while(isspace((unsigned char)*str)) str++;
+	//se så det inte är någon mellanslag i så fall retunera stringen
+  if(!(isspace((unsigned char)*str)))  
+    return str;
 }

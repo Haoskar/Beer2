@@ -178,6 +178,7 @@ int main (void) {
                 save_to_file(products,number_of_products,tempString);
                 break;
             case 6:
+                save_to_file(products,number_of_products,"varor");
                 printf("Good bye!\n");//Implement save to file
                 exit(0);
                 break;

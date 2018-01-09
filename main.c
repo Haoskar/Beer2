@@ -20,6 +20,7 @@ void search_varunummer(); //<- behövs
 void sort_by_namn();
 static int compare_string (Vara * a, Vara * b);
 int  compare(Vara *, Vara *);
+char * trimwhitespace(char *str);
 Vara *products, *start_of_products,*end_of_products;
 int number_of_products = 0;
 
@@ -45,6 +46,13 @@ int main (void) {
     };
     //Göra så products stå på korekt index
     
+    FILE *skrivfil;
+    char name_of_file_or_number[256];
+
+    char badChars[] = "<>:|?*\\/\" \t"; //these are invalid characters for filnames
+    bool invalid_found = false;
+    char fileName[100] = "textdoc";
+    int numInvalidChar = 0;
 
     while(true){
         
@@ -78,7 +86,7 @@ int main (void) {
                 break;    
             case 3:
                 //Varunummer
-
+                products++;
                 printf("\nEnter varunummer: ");
                 fgets(tempString,256,stdin);
                 tempString[strlen(tempString) - 1] = '\0'; //en funktion som tarbort newline tecknet och ersätter med \0
@@ -136,7 +144,7 @@ int main (void) {
                 products->varunummer,products->namn,products->pris,products->volym,products->typ,
                 products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
                 number_of_products++;
-                end_of_products++;
+                //end_of_products++;
                 printf("\n--\n");
                 
                 for(products = start_of_products; products < &start_of_products[number_of_products]; products++){
@@ -157,28 +165,52 @@ int main (void) {
                 search_varunummer(search_word);
                 break;
             case 5:
-                while(1){
-        printf("Vad ska filen kallas: ");
-		fgets(name_of_file_or_number, 512, stdin);
-		//ta bort allt tomrum framför talen
-		strcpy(name_of_file_or_number,trimwhitespace(name_of_file_or_number));
-		//se så personern inte bara har tyrckt på enter eller att det är tom sträng
-		if(strlen(name_of_file_or_number) == 1 || *name_of_file_or_number == 0)
-			printf("du m%cste skriva ett filnamn\n",134);
-		else{
-			name_of_file_or_number = strtok(name_of_file_or_number,"\n");
-			strcat(name_of_file_or_number,".txt");
-			//se till så det inte är ett tomt namn
-			if((skrivfil = fopen(name_of_file_or_number,"w")) == NULL)
-				printf("Gick inte att %cpnna denna fil!\n",148);
-			else
-				break;
-		}
-	}
-                save_to_file(products,number_of_products,tempString);
+
+                /*while(1){
+                    printf("Vad ska filen kallas: ");
+                    fgets(name_of_file_or_number, 512, stdin);
+                    //ta bort allt tomrum framför talen
+                    strcpy(name_of_file_or_number,trimwhitespace(name_of_file_or_number));
+                    //se så personern inte bara har tyrckt på enter eller att det är tom sträng
+                    if(strlen(name_of_file_or_number) == 1 || *name_of_file_or_number == 0)
+                        printf("du m%cste skriva ett filnamn\n",134);
+                    else{
+                        //name_of_file_or_number = strtok(name_of_file_or_number,"\n");
+                        name_of_file_or_number[strlen(name_of_file_or_number) - 1] = '\0';
+                        strcat(name_of_file_or_number,".txt");
+                        //se till så det inte är ett tomt namn
+                        if((skrivfil = fopen(name_of_file_or_number,"w")) == NULL)
+                            printf("Gick inte att %cpnna denna fil!\n",148);
+                        else
+				            break;
+                    }
+                }*/
+
+                do{
+                    printf("Enter filename here: ");
+                    fgets(fileName, 200, stdin);
+                    invalid_found = false;
+                    numInvalidChar = 0;
+                    if(fileName[0] == '\n')                             //can't have '\n' in badChars array. 
+                        invalid_found = true;
+                    else {        
+                        invalid_found = false; 
+                        for (int i = 0; i < strlen(badChars); ++i) {    //compare filename to badChars
+                            if (strchr(fileName, badChars[i]) != NULL){
+                                invalid_found = true;
+                                numInvalidChar++;
+                                }
+                        }
+                    }
+                    if(invalid_found)
+                        printf("%d invalid character(s) found, please use another name. \n", numInvalidChar);
+                }while(invalid_found);
+                strtok(fileName, "\n");
+                products = start_of_products;
+                save_to_file(products,number_of_products,fileName);
                 break;
             case 6:
-                save_to_file(products,number_of_products,"varor");
+                //save_to_file(products,number_of_products,"varor");
                 printf("Good bye!\n");//Implement save to file
                 exit(0);
                 break;
@@ -258,8 +290,7 @@ void sort_by_namn(){
     products = start_of_products;
 }
 
-char *trimwhitespace(char *str)
-{
+char * trimwhitespace(char *str){
   //se så det inte är någon mellanslag i 
   while(isspace((unsigned char)*str)) str++;
 	//se så det inte är någon mellanslag i så fall retunera stringen

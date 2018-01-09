@@ -26,7 +26,6 @@ int  compare(Vara *, Vara *);
 int main (void) {
 
     Vara *products = calloc(100,sizeof(Vara));
-    Vara *start_of_products = products;
     bool valid_input;
     char test_string[20]; 
     char* end;
@@ -34,6 +33,8 @@ int main (void) {
     char tempString[256];
     //läs in varor från varor.csv till products arrayen
     products = Read();
+    Vara *start_of_products = products;
+
     //Göra så products stå på korekt index
     
 
@@ -128,9 +129,10 @@ int main (void) {
                 printf("varunummer: %d\nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
                 products->varunummer,products->namn,products->pris,products->volym,products->typ,
                 products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
+                number_of_products++;
                 printf("\n--\n");
                 products = start_of_products;
-                for(int i = 0; i < number_of_products+1; i++){
+                for(int i = 0; i < number_of_products; i++){
                     //Använd %0.2f när du printar för att få två decimaler och så att float inte tar och visra sina felaktigheter :D
                     printf("varunummer: %d\nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
                     products->varunummer,products->namn,products->pris,products->volym,products->typ,

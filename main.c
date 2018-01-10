@@ -164,12 +164,13 @@ int main (void) {
                 products = start_of_products;
                 break;
             case 4: //hakar ibland upp sig
-
+                printf("hh");
                 printf("\nVarunummer to search: ");
-                fgets(search_word,20, stdin);
-                search_word[strlen(search_word) - 1] = '\0';                //removes newline char
-                
-                search_varunummer(search_word, products, number_of_products, start_of_products);
+                fgets(tempString,20, stdin);
+                printf("HEJSANS");
+                tempString[strlen(tempString) - 1] = '\0';                //removes newline char
+                printf("JERKEHBF");
+                search_varunummer(tempString, products, number_of_products, start_of_products);
                 break;
             case 5:
 

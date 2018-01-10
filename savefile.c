@@ -31,9 +31,8 @@ void search_varunummer(char *search_word,Vara *products, int number_of_products,
     //Vara *products = calloc(100,sizeof(Vara));
     //Vara *start_of_products = products;
     //products = Read();
-
     for(products = start_of_products; products < &start_of_products[number_of_products]; products++){
-        sprintf(temporary_string, "%d", products->varunummer);                  //convert current structs varunummer to string
+        sprintf(temporary_string, "%d", products->varunummer); //convert current structs varunummer to string              
         if (strcmp(search_word, temporary_string) == 0) {                       //compare strings
             printf("\n%s, has the foloing information: \nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
             search_word, products->namn,products->pris,products->volym,products->typ,

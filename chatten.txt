@@ -5,8 +5,8 @@ System: Det som ska göras
 ---------Att Göra----------
 -fixa buggar
 -fixa sökfunktion
-    -så den inte kraschar i mingw FIXAT
+    FIXAT-->så den inte kraschar i mingw FIXAT
 -fixa sorteringsfunktionen
-    -så den soretera innan när man inte lagt till en produkt
+    FIXAT-->så den soretera innan när man inte lagt till en produkt 
 -Testa inputs på lägg till vara
 -avkommenterta och komentera saker och ting

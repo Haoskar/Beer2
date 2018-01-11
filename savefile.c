@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "structinfo.h"
+#include "other_functions.c"
 
 typedef int (*compfn)(const void*, const void*);
 

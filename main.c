@@ -24,6 +24,7 @@ int is_float(char string[]){
     } 
     return 1;
 }
+//asdasd
 void sort_by_varunummer();
 Vara *search_varunummer(); 
 void sort_by_namn();
@@ -34,7 +35,6 @@ Vara *products, *start_of_products,*end_of_products;
 int number_of_products = 0;
 
 
-//fixa en is_float funktion 
 int main (void) {
 
     products = (Vara *) calloc(100,sizeof(Vara));

@@ -128,7 +128,8 @@ int main () {
                 strtok(tempString, "\n");
                 if(strcmp(tempString, "y") == 0){
                     products = start_of_products;
-                    save_to_file(products,number_of_products,"varor");
+                    strcpy(tempString,"varor");
+                    save_to_file(products,number_of_products,tempString);
                     printf("\n");
                 }
                 printf("\nGood bye!\n");

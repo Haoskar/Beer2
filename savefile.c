@@ -8,7 +8,6 @@
 typedef int (*compfn)(const void*, const void*);
 
 void save_to_file(Vara *array_with_products,int number_of_products,char* file_name){
-
   FILE *fp;
   strcat(file_name,".csv");
   if ((fp = fopen(file_name, "w")) == NULL) {

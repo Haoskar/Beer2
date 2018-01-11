@@ -6,7 +6,7 @@
 Vara *Read (void) {
   printf("11111111111111111111111111111111111111111111111111111111111111111\n");
   Vara *varapointer = calloc(100,sizeof(Vara));
-  char *oneline, *tok, *fitem;
+  char *oneline, *tok;
   char envara[256];
   char delim[] = ",";
   Vara *startvara = varapointer;

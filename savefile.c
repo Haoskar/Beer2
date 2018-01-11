@@ -36,21 +36,6 @@ Vara *search_varunummer(char *search_word,Vara *products, int number_of_products
     return NULL;
 }
 
-int compare(Vara *elem1, Vara *elem2)
-{
-   if (elem1->varunummer < elem2->varunummer)
-      return -1;
-   else if (elem1->varunummer > elem2->varunummer)
-      return 1;
-   else
-      return 0;
-}
-
-static int compare_string (Vara *elem1, Vara *elem2)
-{
-    return strcmp (elem1->namn, elem2->namn);
-}
-
 void sort_by_varunummer(Vara *products, int number_of_products,int compare, Vara *start_of_products){      //ev. slå ihop sorteringsfunkjtionerna
     products = start_of_products;     //Måste peka på första elementet i pekararrayen
     qsort(products, number_of_products, sizeof(Vara), (compfn)compare); //Ändra 16

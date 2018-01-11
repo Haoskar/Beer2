@@ -5,25 +5,8 @@
 #include "read_one_lineRob.c"
 #include "structinfo.h"
 #include "savefile.c"
+#include "other_functions.c"
 
-
-
-int isInt(char string[]){
-    for(int i = 0; i < strlen(string) - 1; i++){
-        if(!isdigit(string[i]) || string[i] == 0)
-            return 0;
-    } 
-    return 1;
-}
-
-int is_float(char string[]){
-    for(int i = 0; i < strlen(string) - 1; i++){
-        if(!isdigit(string[i]) || string[i] == 0)
-            if(string[i] != '.')
-                return 0;   
-    } 
-    return 1;
-}
 
 void sort_by_varunummer();
 Vara *search_varunummer(); 

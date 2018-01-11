@@ -47,7 +47,7 @@ void sort_by_varunummer(Vara *products, int number_of_products,int compare, Vara
     }
     products = start_of_products;
 }
-
+//denna funktion sorterar efterstora bokstäver först sedan små
 void sort_by_namn(Vara *products, int number_of_products,int compare_string, Vara *start_of_products){
     products = start_of_products;     //Måste peka på första elementet i pekararrayen
     qsort(products, number_of_products, sizeof(Vara), (compfn)compare_string); 
@@ -76,8 +76,8 @@ Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, 
     do{
     printf("Enter namn: ");
     fgets(tempString,256,stdin);
-    tempString[strlen(tempString) - 1] = '\0';
     }while(!strcmp(tempString, ""));
+    tempString[strlen(tempString) - 1] = '\0';
     strcpy(products->namn,tempString);
 
     do{

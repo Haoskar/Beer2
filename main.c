@@ -24,7 +24,7 @@ int is_float(char string[]){
     } 
     return 1;
 }
-//asdasd
+
 void sort_by_varunummer();
 Vara *search_varunummer(); 
 void sort_by_namn();

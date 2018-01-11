@@ -75,7 +75,6 @@ int main () {
                 "varunummer",products->varunummer,"namn",products->namn,"pris",products->pris,"volym",products->volym,"typ",products->typ,"stil",products->stil,"forpackning",products->forpackning,"land",products->land,"producent",products->producent,"alkoholhalt",products->alkoholhalt);
                 number_of_products++;
                 end_of_products++;
-                printf("\n--\n");
                 products = start_of_products;
                 break;
             case 4:

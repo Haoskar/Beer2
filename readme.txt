@@ -6,4 +6,4 @@ Detta program går att kompilera med "mingw" och "Developer command prompt for V
 Speciella antaganden:   vi har inte ändrat storleken på "land" membern i structen, 
                         även fast den är förliten för en av ölen som följde med i uppgiften.
 
-kompilera med kommandot "gcc main.c"
+kompilera med kommandot "gcc main.c" eller "cl main.c"

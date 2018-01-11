@@ -17,6 +17,19 @@ Vara *products, *start_of_products,*end_of_products;
 int number_of_products = 0;
 
 
+void f(char *a)//char *b,char *c,char *d,char *e,char *f,char *g,char *h)
+{
+        printf("---%*s%*s---\n",10+strlen(a)/2,s,10-strlen(a)/2,"");
+        /*
+        printf("---%*s%*s---\n",10+strlen(b)/2,s,10-strlen(s)/2,"");
+        printf("---%*s%*s---\n",10+strlen(c)/2,s,10-strlen(s)/2,"");
+        printf("---%*s%*s---\n",10+strlen(d)/2,s,10-strlen(s)/2,"");
+        printf("---%*s%*s---\n",10+strlen(e)/2,s,10-strlen(s)/2,"");
+        printf("---%*s%*s---\n",10+strlen(f)/2,s,10-strlen(s)/2,"");
+        printf("---%*s%*s---\n",10+strlen(g)/2,s,10-strlen(s)/2,"");
+        printf("---%*s%*s---\n",10+strlen(h)/2,s,10-strlen(s)/2,"");*/
+}
+
 int main () {
     products = (Vara *) calloc(100,sizeof(Vara));
     bool valid_input, invalid_found = false;
@@ -37,7 +50,9 @@ int main () {
     FILE *skrivfil;
     char badChars[] = "<>:|?*\\/\" \t"; //these are invalid characters for filnames
     char fileName[100] = "textdoc";
-
+    printf(":%-10s, %20s\n","hej", "halloj" );
+    f("uno");
+    f("quattro");
     while(true){
         
         printf("\n---------------------------------------------------------\n");
@@ -72,13 +87,14 @@ int main () {
                 if(products == NULL)
                     break;
 
+
                 printf("\n\nYou have added: \n");
                 printf("varunummer: %d\nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
                 products->varunummer,products->namn,products->pris,products->volym,products->typ,products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
                 number_of_products++;
                 end_of_products++;
                 printf("\n--\n");
-                
+                //printf("")
                 for(products = start_of_products; products < &start_of_products[number_of_products]; products++){
                     printf("varunummer: %d\nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
                     products->varunummer,products->namn,products->pris,products->volym,products->typ,products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
@@ -101,7 +117,6 @@ int main () {
                 products = start_of_products;
                 break;
             case 5:
-
                 do{
                     printf("Enter filename here: ");
                     fgets(fileName, 200, stdin);
@@ -136,15 +151,11 @@ int main () {
                     printf("\nGood1bye!\n");
                     printf("\nGood2bye!\n");
                 }
-
                 printf("\nGood bye!\n");
                 exit(0);
                 break;
             default:
                 printf("\nPlease enter a number between 1-6\n");
-
         }
     }
-
 }
-

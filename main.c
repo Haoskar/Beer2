@@ -19,7 +19,7 @@ int number_of_products = 0;
 
 void f(char *a)//char *b,char *c,char *d,char *e,char *f,char *g,char *h)
 {
-        printf("---%*s%*s---\n",10+strlen(a)/2,s,10-strlen(a)/2,"");
+        printf("---%*s%*s---\n",10+strlen(a)/2,a,10-strlen(a)/2,"");
         /*
         printf("---%*s%*s---\n",10+strlen(b)/2,s,10-strlen(s)/2,"");
         printf("---%*s%*s---\n",10+strlen(c)/2,s,10-strlen(s)/2,"");

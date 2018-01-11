@@ -89,7 +89,7 @@ Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, 
     fgets(tempString,256,stdin);
     tempString = trimwhitespace(tempString);
     tempString[strlen(tempString) - 1] = '\0';
-    }while(!is_float(tempString));
+    }while(!is_float(tempString) || !strcmp(tempString, ""));
     products->pris = atof(tempString);
 
     do{          
@@ -97,7 +97,7 @@ Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, 
     fgets(tempString,256,stdin);
     tempString = trimwhitespace(tempString);
     tempString[strlen(tempString) - 1] = '\0';
-    }while(!is_float(tempString) && !strcmp(tempString, ""));
+    }while(!is_float(tempString) || !strcmp(tempString, ""));
     products->volym = atof(tempString);
 
     do{                

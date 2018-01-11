@@ -30,32 +30,25 @@ Vara *search_varunummer();
 void sort_by_namn();
 static int compare_string (Vara * a, Vara * b);
 int  compare(Vara *, Vara *);
-char * trimwhitespace(char *str);
 Vara *products, *start_of_products,*end_of_products;
 int number_of_products = 0;
 
 
 int main () {
-    printf("kahjsbfsdf\n");
-    //products = (Vara *) calloc(100,sizeof(Vara));
-    printf("OKSAROKASORKAWSORKOSAKRASOKRASORK\n");
+    products = (Vara *) calloc(100,sizeof(Vara));
     bool valid_input, invalid_found = false;
-    printf("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n");
     char* end;
-    printf("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII\n");
     int option, numInvalidChar = 0;
-    printf("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\n");
     char tempString[256];
     //läs in varor från varor.csv till products arrayen
-    printf("ASLJKFBNSFIKDJGBDEFKLJGBNERDOIBGENRDOBGERDNGKLERDJ\n");
     products = Read();
-    printf("alsknfosdjfnbdsf");
     start_of_products = products;
     end_of_products = start_of_products;
 
     while(products->varunummer != 0){
         end_of_products++;
         number_of_products++;
+        products++;
     };
     
     FILE *skrivfil;

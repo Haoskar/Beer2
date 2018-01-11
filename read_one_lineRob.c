@@ -4,65 +4,61 @@
 #include "structinfo.h"
 
 Vara *Read (void) {
-  printf("11111111111111111111111111111111111111111111111111111111111111111\n");
-  Vara *varapointer = calloc(100,sizeof(Vara));
-  char *oneline, *tok;
+  Vara *varapointer = (Vara *)calloc(100,sizeof(Vara));
+  char *tok;
   char envara[256];
   char delim[] = ",";
   Vara *startvara = varapointer;
 
 
   FILE *fp;
-  printf("22222222222222222222222222222222222222222222222222222222222222222222222222\n");
   if ((fp = fopen("varor.csv", "r")) == NULL) {
     fprintf(stderr, "Filen varor.csv gick inte att öppna\n");
     exit(-1);
   }
-  printf("33333333333333333333333333333333333333333333333333333333333333333333333333333\n");
-int i=1;
+
   while(fgets(envara, 256, fp) !=NULL){
-    printf("%d\n",i);
+
     envara[strlen(envara) - 1] = '\0'; // Ta bort radslutstecknet
-printf("44444444444444444444444444444444444444444444444444444444444444444444444444444444444\n");
+
     tok = strtok(envara, delim);
-    printf("STRTOKSTRTOKSTRTOKSTRTOKSTRTOKSTRTOKSTRTOKSTRTOKSTRTOKSTRTOKSTRTOK\n");
-    varapointer->varunummer = atoi(tok);
+
+    varapointer->varunummer = (int)strtol(tok,(char **)NULL,10);
     tok = strtok(NULL, delim);
-printf("55555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555\n");
+
     strcpy(varapointer->namn,tok);
-    printf("5656565656565656565656565656565656565656565656565656565656565656565656565656565665656565656565656565\n");
+    
     tok = strtok(NULL, delim);
-printf("6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666\n");
+
     varapointer->pris = strtof(tok,NULL);
     tok = strtok(NULL, delim);
-   printf("777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777\n");
+   
     varapointer->volym = atof(tok);
     tok = strtok(NULL, delim);
-   printf("88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888\n");
+   
     strcpy(varapointer->typ,tok);
     tok = strtok(NULL, delim);
-   printf("9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999\n");
+   
     strcpy(varapointer->stil,tok);
     tok = strtok(NULL, delim);
-   printf("00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\n");
+   
     strcpy(varapointer->forpackning,tok);
     tok = strtok(NULL, delim);
-   printf("aAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n");
+   
     strcpy(varapointer->land,tok);
     tok = strtok(NULL, delim);
-   printf("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\n");
+   
     strcpy(varapointer->producent,tok);
     tok = strtok(NULL, delim);
-   printf("´CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC\n");
+   
     varapointer->alkoholhalt = atof(tok);
     tok = strtok(NULL, delim);
-    printf("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD\n");
+   
 
     varapointer++;
-    printf("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE\n");
-  free(oneline); free(tok);
-  printf("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFf\n");
-i++;
+   
+  free(tok);
+  
 }
   varapointer = startvara;
   fclose(fp);

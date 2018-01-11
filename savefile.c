@@ -20,6 +20,7 @@ void save_to_file(Vara *array_with_products,int number_of_products,char* file_na
       array_with_products++;
   }
   printf("Du har sparat varorna till filen %s",file_name);
+  fclose(fp);
 }
 
 Vara *search_varunummer(char *search_word,Vara *products, int number_of_products, Vara *start_of_products){

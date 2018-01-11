@@ -47,7 +47,7 @@ void sort_by_varunummer(Vara *products, int number_of_products,int compare, Vara
     }
     products = start_of_products;
 }
-//denna funktion sorterar efter stora bokstäver först sedan små
+//denna funktion sorterar efterstora bokstäver först sedan små
 void sort_by_namn(Vara *products, int number_of_products,int compare_string, Vara *start_of_products){
     products = start_of_products;     //Måste peka på första elementet i pekararrayen
     qsort(products, number_of_products, sizeof(Vara), (compfn)compare_string); 
@@ -60,13 +60,13 @@ void sort_by_namn(Vara *products, int number_of_products,int compare_string, Var
 }
 
 Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, Vara *end_of_products){
-    char *tempString =(char *) calloc(256,sizeof(char));
+    char *tempString = (char *) calloc(256,sizeof(char));
     do{
     printf("\nEnter varunummer: ");
     fgets(tempString,256,stdin);
     tempString = trimwhitespace(tempString);
     tempString[strlen(tempString) - 1] = '\0';
-    }while(!isInt(tempString) && !strcmp(tempString, ""));       
+    }while(!isInt(tempString) || !strcmp(tempString, ""));       
 
     products = search_varunummer(tempString, products, number_of_products, start_of_products);
     if (products != NULL){
@@ -89,7 +89,7 @@ Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, 
     fgets(tempString,256,stdin);
     tempString = trimwhitespace(tempString);
     tempString[strlen(tempString) - 1] = '\0';
-    }while(!is_float(tempString) || !strcmp(tempString, ""));
+    }while(!is_float(tempString));
     products->pris = atof(tempString);
 
     do{          
@@ -97,7 +97,7 @@ Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, 
     fgets(tempString,256,stdin);
     tempString = trimwhitespace(tempString);
     tempString[strlen(tempString) - 1] = '\0';
-    }while(!is_float(tempString) || !strcmp(tempString, ""));
+    }while(!is_float(tempString) && !strcmp(tempString, ""));
     products->volym = atof(tempString);
 
     do{                
@@ -145,7 +145,7 @@ Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, 
     fgets(tempString,256,stdin);
     tempString = trimwhitespace(tempString);
     tempString[strlen(tempString) - 1] = '\0';
-    }while(!is_float(tempString) || !strcmp(tempString, ""));
+    }while(!is_float(tempString) && !strcmp(tempString, ""));
     products->alkoholhalt = atof(tempString);
 
     return products;                        //returns the added vara

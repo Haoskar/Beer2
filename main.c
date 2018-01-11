@@ -35,15 +35,21 @@ Vara *products, *start_of_products,*end_of_products;
 int number_of_products = 0;
 
 
-int main (void) {
-
+int main () {
+    printf("kahjsbfsdf");
     products = (Vara *) calloc(100,sizeof(Vara));
-    bool valid_input, invalid_found = false;;
+    printf("OKSAROKASORKAWSORKOSAKRASOKRASORK");
+    bool valid_input, invalid_found = false;
+    printf("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
     char* end;
+    printf("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
     int option, numInvalidChar = 0;
+    printf("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
     char tempString[256];
     //läs in varor från varor.csv till products arrayen
+    printf("ASLJKFBNSFIKDJGBDEFKLJGBNERDOIBGENRDOBGERDNGKLERDJ ");
     products = Read();
+    printf("alsknfosdjfnbdsf");
     start_of_products = products;
     end_of_products = start_of_products;
 

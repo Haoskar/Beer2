@@ -25,7 +25,7 @@ int is_float(char string[]){
     return 1;
 }
 void sort_by_varunummer();
-void search_varunummer(); //<- behövs
+Vara *search_varunummer(); //<- behövs
 void sort_by_namn();
 static int compare_string (Vara * a, Vara * b);
 int  compare(Vara *, Vara *);
@@ -95,10 +95,17 @@ int main (void) {
                 break;    
             case 3:
                 //Varunummer
-                products = end_of_products;
+                //products = end_of_products;
                 printf("\nEnter varunummer: ");
                 fgets(tempString,256,stdin);
                 tempString[strlen(tempString) - 1] = '\0'; //en funktion som tarbort newline tecknet och ersätter med \0
+                
+                products = search_varunummer(tempString, products, number_of_products, start_of_products);
+                if (products != NULL){
+                    printf("\nVarunummer not uniqe, choose another varunummer next time");
+                    break;
+                }
+                products = end_of_products;         //adding a new product, needs to point at end of array
                 products->varunummer = atoi(tempString);
 
                 printf("Enter namn: ");
@@ -166,8 +173,16 @@ int main (void) {
             case 4: //hakar ibland upp sig
                 printf("\nVarunummer to search: ");
                 fgets(tempString,20, stdin);
-                tempString[strlen(tempString) - 1] = '\0';                //removes newline char
-                search_varunummer(tempString, products, number_of_products, start_of_products);
+                tempString[strlen(tempString) - 1] = '\0'; //removes newline char
+
+                products = search_varunummer(tempString, products, number_of_products, start_of_products);
+                if(products == NULL)
+                    printf("\nThe number %s did not match any varunummer", tempString);
+                else{
+                    printf("\n%s, has the following information: \nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
+                    tempString, products->namn,products->pris,products->volym,products->typ,products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt); //horrendous printf
+                }
+                products = start_of_products;
                 break;
             case 5:
 

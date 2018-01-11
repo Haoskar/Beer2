@@ -23,27 +23,17 @@ void save_to_file(Vara *array_with_products,int number_of_products,char* file_na
   printf("Du har sparat varorna till filen %s",file_name);
 }
 
-void search_varunummer(char *search_word,Vara *products, int number_of_products, Vara *start_of_products){
+Vara *search_varunummer(char *search_word,Vara *products, int number_of_products, Vara *start_of_products){
     char *end;
     char temporary_string[20];
     bool match_found = false;
 
-    //Vara *products = calloc(100,sizeof(Vara));
-    //Vara *start_of_products = products;
-    //products = Read();
     for(products = start_of_products; products < &start_of_products[number_of_products]; products++){
         sprintf(temporary_string, "%d", products->varunummer); //convert current structs varunummer to string              
-        if (strcmp(search_word, temporary_string) == 0) {                       //compare strings
-            printf("\n%s, has the following information: \nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
-            search_word, products->namn,products->pris,products->volym,products->typ,
-            products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt); //horrendous printf
-            match_found = true;
-           break;
-        }  
+        if (strcmp(search_word, temporary_string) == 0)                      //compare strings
+           return products;
     }
-    products = start_of_products;
-    if(!match_found)
-        printf("\nThe number %s did not match any varunummer", search_word);
+    return NULL;
 }
 
 int compare(Vara *elem1, Vara *elem2)

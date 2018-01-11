@@ -46,4 +46,12 @@ static int compare_string (Vara *elem1, Vara *elem2)
     return strcmp (elem1->namn, elem2->namn);
 }
 
+char *trimwhitespace(char *str)
+{
+  //se så det inte är någon mellanslag i 
+  while(isspace((unsigned char)*str)) str++;
+	//se så det inte är någon mellanslag i så fall retunera stringen
+  if(!(isspace((unsigned char)*str)))  
+    return str;
+}
 #endif

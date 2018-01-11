@@ -22,38 +22,37 @@ Vara *Read (void) {
     envara[strlen(envara) - 1] = '\0'; // Ta bort radslutstecknet
 
     tok = strtok(envara, delim);
+    if(tok != NULL){
+      varapointer->varunummer = (int)strtol(tok,(char **)NULL,10);
+      tok = strtok(NULL, delim);
 
-    varapointer->varunummer = (int)strtol(tok,(char **)NULL,10);
-    tok = strtok(NULL, delim);
+      strcpy(varapointer->namn,tok);
+      tok = strtok(NULL, delim);
 
-    strcpy(varapointer->namn,tok);
-    
-    tok = strtok(NULL, delim);
-
-    varapointer->pris = strtof(tok,NULL);
-    tok = strtok(NULL, delim);
+      varapointer->pris = strtof(tok,NULL);
+      tok = strtok(NULL, delim);
    
-    varapointer->volym = atof(tok);
-    tok = strtok(NULL, delim);
+      varapointer->volym = atof(tok);
+      tok = strtok(NULL, delim);
    
-    strcpy(varapointer->typ,tok);
-    tok = strtok(NULL, delim);
+      strcpy(varapointer->typ,tok);
+      tok = strtok(NULL, delim);
    
-    strcpy(varapointer->stil,tok);
-    tok = strtok(NULL, delim);
+      strcpy(varapointer->stil,tok);
+      tok = strtok(NULL, delim);
    
-    strcpy(varapointer->forpackning,tok);
-    tok = strtok(NULL, delim);
+      strcpy(varapointer->forpackning,tok);
+      tok = strtok(NULL, delim);
    
-    strcpy(varapointer->land,tok);
-    tok = strtok(NULL, delim);
+      strcpy(varapointer->land,tok);
+      tok = strtok(NULL, delim);
    
-    strcpy(varapointer->producent,tok);
-    tok = strtok(NULL, delim);
+      strcpy(varapointer->producent,tok);
+      tok = strtok(NULL, delim);
    
-    varapointer->alkoholhalt = atof(tok);
-    tok = strtok(NULL, delim);
-   
+      varapointer->alkoholhalt = atof(tok);
+      tok = strtok(NULL, delim);
+    }
 
     varapointer++;
    

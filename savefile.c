@@ -60,12 +60,16 @@ void sort_by_namn(Vara *products, int number_of_products,int compare_string, Var
 }
 
 Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, Vara *end_of_products){
-    char tempString[256];
+    char *tempString =(char *) calloc(256,sizeof(char));
     do{
     printf("\nEnter varunummer: ");
     fgets(tempString,256,stdin);
-    //tempString[strlen(tempString) - 1] = '\0';  
-    }while(!isInt(tempString) && !strcmp(tempString, " \n"));       
+    printf("Före:%d",strlen(tempString));
+    tempString = trimwhitespace(tempString);
+    printf("Efter:%d",strlen(tempString));
+    tempString[strlen(tempString) - 1] = '\0';
+    }while(!isInt(tempString) && !strcmp(tempString, ""));       
+
     products = search_varunummer(tempString, products, number_of_products, start_of_products);
     if (products != NULL){
         printf("\nVarunummer not uniqe, choose another varunummer next time");
@@ -77,12 +81,8 @@ Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, 
     do{
     printf("Enter namn: ");
     fgets(tempString,256,stdin);
-<<<<<<< HEAD
-=======
-    tempString[strlen(tempString) - 1] = '\0'; //tar bort newline tecknet och ersätter med \0
->>>>>>> da078067cd925ebe97f2879263349866ddc47c8f
-    }while(!strcmp(tempString, ""));
     tempString[strlen(tempString) - 1] = '\0';
+    }while(!strcmp(tempString, ""));
     strcpy(products->namn,tempString);
 
     do{
@@ -140,5 +140,6 @@ Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, 
     tempString[strlen(tempString) - 1] = '\0';
     }while(!is_float(tempString));
     products->alkoholhalt = atof(tempString);
+
     return products;                        //returns the added vara
 }

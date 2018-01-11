@@ -47,8 +47,10 @@ int main () {
             fgets(tempString, 20, stdin);
             if(tempString[0] == '\n')
                 valid_input = false;
-            else
+            else{
+                tempString[strlen(tempString) - 1] = '\0';
                 valid_input = isInt(tempString);
+            }
         }while(!valid_input);
 
         option = strtol(tempString, &end, 10);

@@ -20,7 +20,8 @@ int is_float(char *string){
         if(string[i] == '.'){
             dots++;
         }
-        if(!isdigit(string[i]) || dots > 1){
+        printf("dig:%d\ndot:%d\n",isdigit(string),dots);
+        if((!(isdigit(string[i])) && string[i] != '.')|| dots > 1){
             return 0;
         }
     } 

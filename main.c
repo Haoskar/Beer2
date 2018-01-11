@@ -56,8 +56,6 @@ int main (void) {
     //Göra så products stå på korekt index
     
     FILE *skrivfil;
-    char name_of_file_or_number[256];
-
     char badChars[] = "<>:|?*\\/\" \t"; //these are invalid characters for filnames
     bool invalid_found = false;
     char fileName[100] = "textdoc";
@@ -85,7 +83,6 @@ int main (void) {
         }while(!valid_input);
 
         option = strtol(test_string, &end, 10);
-        char *search_word = "9";
         switch(option){
             case 1:
                 sort_by_varunummer(products,number_of_products,compare,start_of_products);
@@ -94,78 +91,21 @@ int main (void) {
                 sort_by_namn(products, number_of_products, compare_string, start_of_products);
                 break;    
             case 3:
-                //Varunummer
-                //products = end_of_products;
-                printf("\nEnter varunummer: ");
-                fgets(tempString,256,stdin);
-                tempString[strlen(tempString) - 1] = '\0'; //en funktion som tarbort newline tecknet och ersätter med \0
-                
-                products = search_varunummer(tempString, products, number_of_products, start_of_products);
-                if (products != NULL){
-                    printf("\nVarunummer not uniqe, choose another varunummer next time");
+
+                products = add_vara(products, number_of_products, start_of_products, end_of_products);
+                if(products == NULL)
                     break;
-                }
-                products = end_of_products;         //adding a new product, needs to point at end of array
-                products->varunummer = atoi(tempString);
-
-                printf("Enter namn: ");
-                fgets(tempString,256,stdin);
-                tempString[strlen(tempString) - 1] = '\0';
-                strcpy(products->namn,tempString);
-
-                printf("Enter pris: ");
-                fgets(tempString,256,stdin);
-                tempString[strlen(tempString) - 1] = '\0';
-                products->pris = atof(tempString);
-                
-                printf("Enter volym: ");
-                fgets(tempString,256,stdin);
-                tempString[strlen(tempString) - 1] = '\0';
-                products->volym = atof(tempString);
-                
-                printf("Enter typ: ");
-                fgets(tempString,256,stdin);
-                tempString[strlen(tempString) - 1] = '\0';
-                strcpy(products->typ,tempString);
-                
-                printf("Enter stil: ");
-                fgets(tempString,256,stdin);
-                tempString[strlen(tempString) - 1] = '\0';
-                strcpy(products->stil,tempString);
-                
-                printf("Enter forpackning: ");
-                fgets(tempString,256,stdin);
-                tempString[strlen(tempString) - 1] = '\0';
-                strcpy(products->forpackning,tempString);
-                
-                printf("Enter land: ");
-                fgets(tempString,256,stdin);
-                tempString[strlen(tempString) - 1] = '\0';
-                strcpy(products->land,tempString);
-                
-                printf("Enter producent: ");
-                fgets(tempString,256,stdin);
-                tempString[strlen(tempString) - 1] = '\0';
-                strcpy(products->producent,tempString);
-                
-                printf("Enter alkoholhalt: ");
-                fgets(tempString,256,stdin);
-                tempString[strlen(tempString) - 1] = '\0';
-                products->alkoholhalt = atof(tempString);
 
                 printf("\n\nYou have added: \n");
-                printf("varunummer: %d\nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
-                products->varunummer,products->namn,products->pris,products->volym,products->typ,
-                products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
+                printf("varunummer: %d\nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
+                products->varunummer,products->namn,products->pris,products->volym,products->typ,products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
                 number_of_products++;
                 end_of_products++;
                 printf("\n--\n");
                 
                 for(products = start_of_products; products < &start_of_products[number_of_products]; products++){
-                    //Använd %0.2f när du printar för att få två decimaler och så att float inte tar och visra sina felaktigheter :D
                     printf("varunummer: %d\nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
-                    products->varunummer,products->namn,products->pris,products->volym,products->typ,
-                    products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
+                    products->varunummer,products->namn,products->pris,products->volym,products->typ,products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
                     printf("--------------------------------------\n");
                 }
                 products = start_of_products;
@@ -179,7 +119,7 @@ int main (void) {
                 if(products == NULL)
                     printf("\nThe number %s did not match any varunummer", tempString);
                 else{
-                    printf("\n%s, has the following information: \nnamn: %s\npris: %f\nvolym: %f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %f \n", 
+                    printf("\n%s, has the following information: \nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
                     tempString, products->namn,products->pris,products->volym,products->typ,products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt); //horrendous printf
                 }
                 products = start_of_products;
@@ -212,16 +152,17 @@ int main (void) {
             case 6:
                 printf("Save to varor.csv before quitting?(y/n)");
                 fgets(tempString, 5,stdin);
-                //tempString[strlen(tempString - 1)] = '\0';
                 strtok(tempString, "\n");
-                //printf("::%s", tempString);
                 if(strcmp(tempString, "y") == 0){
                     products = start_of_products;
                     save_to_file(products,number_of_products,"varor");
-                    printf("done!");
+                    fflush(stdout);
+                    printf("\nGood1bye!\n");
+                    printf("\nGood2bye!\n");
+
                 }
 
-                printf("Good bye!\n");
+                printf("\nGood bye!\n");
                 exit(0);
                 break;
             default:

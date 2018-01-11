@@ -80,3 +80,66 @@ void sort_by_namn(Vara *products, int number_of_products,int compare_string, Var
     }
     products = start_of_products;
 }
+
+Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, Vara *end_of_products){
+
+    char tempString[256];
+    printf("\nEnter varunummer: ");
+    fgets(tempString,256,stdin);
+    tempString[strlen(tempString) - 1] = '\0'; //en funktion som tarbort newline tecknet och ersätter med \0
+               
+    products = search_varunummer(tempString, products, number_of_products, start_of_products);
+    if (products != NULL){
+        printf("\nVarunummer not uniqe, choose another varunummer next time");
+        return NULL;
+    }
+    products = end_of_products;         //adding a new product, needs to point at end of array
+    products->varunummer = atoi(tempString);
+
+    printf("Enter namn: ");
+    fgets(tempString,256,stdin);
+    tempString[strlen(tempString) - 1] = '\0';
+    strcpy(products->namn,tempString);
+
+    printf("Enter pris: ");
+    fgets(tempString,256,stdin);
+    tempString[strlen(tempString) - 1] = '\0';
+    products->pris = atof(tempString);
+                
+    printf("Enter volym: ");
+    fgets(tempString,256,stdin);
+    tempString[strlen(tempString) - 1] = '\0';
+    products->volym = atof(tempString);
+                    
+    printf("Enter typ: ");
+    fgets(tempString,256,stdin);
+    tempString[strlen(tempString) - 1] = '\0';
+    strcpy(products->typ,tempString);
+                    
+    printf("Enter stil: ");
+    fgets(tempString,256,stdin);
+    tempString[strlen(tempString) - 1] = '\0';
+    strcpy(products->stil,tempString);
+                    
+    printf("Enter forpackning: ");
+    fgets(tempString,256,stdin);
+    tempString[strlen(tempString) - 1] = '\0';
+    strcpy(products->forpackning,tempString);
+                    
+    printf("Enter land: ");
+    fgets(tempString,256,stdin);
+    tempString[strlen(tempString) - 1] = '\0';
+    strcpy(products->land,tempString);
+                
+    printf("Enter producent: ");
+    fgets(tempString,256,stdin);
+    tempString[strlen(tempString) - 1] = '\0';
+    strcpy(products->producent,tempString);
+                
+    printf("Enter alkoholhalt: ");
+    fgets(tempString,256,stdin);
+    tempString[strlen(tempString) - 1] = '\0';
+    products->alkoholhalt = atof(tempString);
+
+    return products;
+}

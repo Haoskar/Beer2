@@ -60,11 +60,11 @@ int main () {
                 sort_by_namn(products, number_of_products, compare_string, start_of_products);
                 break;    
             case 3:
-                if(number_of_products >= 100){
+                if(number_of_products >= 100){      //more than 100 products?
                     printf("Too many varor!\n");
                     break;
                 }
-                products = add_vara(products, number_of_products, start_of_products, end_of_products);
+                products = add_vara(products, number_of_products, start_of_products, end_of_products); //returns null if varunummer duplicate
                 if(products == NULL)
                     break;
 
@@ -88,7 +88,7 @@ int main () {
 
                 products = search_varunummer(tempString, products, number_of_products, start_of_products);
                 if(products == NULL)
-                    printf("\nThe number %s did not match any varunummer", tempString);
+                    printf("\n%s did not match any varunummer", tempString);
                 else{
                     printf("\n%s, has the following information: \n%-11s: %s\n%-11s: %0.2f\n%-11s: %0.2f\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %0.2f \n", 
                     tempString,"namn",products->namn,"pris",products->pris,"volym",products->volym,"typ",products->typ,"stil",products->stil,"forpackning",products->forpackning,"land",products->land,"producent",products->producent,"alkoholhalt",products->alkoholhalt);

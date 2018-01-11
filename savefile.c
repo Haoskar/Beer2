@@ -73,10 +73,11 @@ Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, 
     }
     products = end_of_products;         //adding a new product, needs to point at end of array
     products->varunummer = atoi(tempString);
-
+    do{
     printf("Enter namn: ");
     fgets(tempString,256,stdin);
     tempString[strlen(tempString) - 1] = '\0';
+    }while(!strcmp(tempString, ""));
     strcpy(products->namn,tempString);
 
     do{
@@ -90,30 +91,40 @@ Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, 
     fgets(tempString,256,stdin);
     tempString[strlen(tempString) - 1] = '\0';
     products->volym = atof(tempString);
-                    
+
+    do{                
     printf("Enter typ: ");
     fgets(tempString,256,stdin);
     tempString[strlen(tempString) - 1] = '\0';
+    }while(!strcmp(tempString, ""));
     strcpy(products->typ,tempString);
-                    
+
+    do{                
     printf("Enter stil: ");
     fgets(tempString,256,stdin);
     tempString[strlen(tempString) - 1] = '\0';
+    }while(!strcmp(tempString, ""));
     strcpy(products->stil,tempString);
-                    
+
+    do{               
     printf("Enter forpackning: ");
     fgets(tempString,256,stdin);
     tempString[strlen(tempString) - 1] = '\0';
+    }while(!strcmp(tempString, ""));
     strcpy(products->forpackning,tempString);
-                    
+    
+    do{              
     printf("Enter land: ");
     fgets(tempString,256,stdin);
     tempString[strlen(tempString) - 1] = '\0';
+    }while(!strcmp(tempString, ""));
     strcpy(products->land,tempString);
-                
+
+    do{           
     printf("Enter producent: ");
     fgets(tempString,256,stdin);
     tempString[strlen(tempString) - 1] = '\0';
+    }while(!strcmp(tempString, ""));
     strcpy(products->producent,tempString);
                 
     printf("Enter alkoholhalt: ");

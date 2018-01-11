@@ -195,15 +195,18 @@ int main (void) {
                 save_to_file(products,number_of_products,fileName);
                 break;
             case 6:
-                //save_to_file(products,number_of_products,"varor");
-                printf("Good bye!\n");//Implement save to file
+                printf("Save to varor.csv before quitting?(y/n)");
+                fgets(tempString, 5,stdin);
+                if(strcmp(tempString, "y") == 0)
+                    save_to_file(products,number_of_products,"varor");
+
+                printf("Good bye!\n");
                 exit(0);
                 break;
             default:
                 printf("Something went wrong");
 
         }
-        printf("Funkar fint");
     }
 
 }

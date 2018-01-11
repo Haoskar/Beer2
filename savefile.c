@@ -66,7 +66,7 @@ Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, 
     fgets(tempString,256,stdin);
     tempString = trimwhitespace(tempString);
     tempString[strlen(tempString) - 1] = '\0';
-    }while(!isInt(tempString) && !strcmp(tempString, ""));       
+    }while(!isInt(tempString) || !strcmp(tempString, ""));       
 
     products = search_varunummer(tempString, products, number_of_products, start_of_products);
     if (products != NULL){

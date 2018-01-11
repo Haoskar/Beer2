@@ -17,9 +17,9 @@ Vara *products, *start_of_products,*end_of_products;
 int number_of_products = 0;
 
 
-void f(char *a)//char *b,char *c,char *d,char *e,char *f,char *g,char *h)
+void f(char *a, int l)//char *b,char *c,char *d,char *e,char *f,char *g,char *h)
 {
-        printf("---%*s%*s---\n",10+strlen(a)/2,a,10-strlen(a)/2,"");
+        printf("|   %*s%*s   |",l+strlen(a)/2,a,l-strlen(a)/2,"");
         /*
         printf("---%*s%*s---\n",10+strlen(b)/2,s,10-strlen(s)/2,"");
         printf("---%*s%*s---\n",10+strlen(c)/2,s,10-strlen(s)/2,"");
@@ -51,8 +51,7 @@ int main () {
     char badChars[] = "<>:|?*\\/\" \t"; //these are invalid characters for filnames
     char fileName[100] = "textdoc";
     printf(":%-10s, %20s\n","hej", "halloj" );
-    f("uno");
-    f("quattro");
+
     while(true){
         
         printf("\n---------------------------------------------------------\n");
@@ -83,21 +82,35 @@ int main () {
                 sort_by_namn(products, number_of_products, compare_string, start_of_products);
                 break;    
             case 3:
+            //printf("%-11s: %d\n%-11s: %s","",);
                 products = add_vara(products, number_of_products, start_of_products, end_of_products);
                 if(products == NULL)
                     break;
-
-
+/*
+                f("varunummer", 2);
+                f("namn", 10);
+                f("pris", 2);
+                f("volym", 2);
+                f("typ", 7);
+                f("stil", 7);
+                f("forpackning", 4);
+                f("land", 8);
+                f("producent", 7);
+                f("alkoholhalt", 2);
+*/
                 printf("\n\nYou have added: \n");
-                printf("varunummer: %d\nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
-                products->varunummer,products->namn,products->pris,products->volym,products->typ,products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
+                
+                printf("%-11s: %d\n%-11s: %s\n%-11s: %0.2f\n%-11s: %0.2f\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %0.2f \n", 
+                "varunummer",products->varunummer,"namn",products->namn,"pris",products->pris,"volym",products->volym,"typ",products->typ,"stil",products->stil,"forpackning",products->forpackning,"land",products->land,"producent",products->producent,"alkoholhalt",products->alkoholhalt);
                 number_of_products++;
                 end_of_products++;
                 printf("\n--\n");
                 //printf("")
                 for(products = start_of_products; products < &start_of_products[number_of_products]; products++){
-                    printf("varunummer: %d\nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
-                    products->varunummer,products->namn,products->pris,products->volym,products->typ,products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
+                    //printf("varunummer: %d\nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
+                    //products->varunummer,products->namn,products->pris,products->volym,products->typ,products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
+                    printf("%-11s: %d\n%-11s: %s\n%-11s: %0.2f\n%-11s: %0.2f\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %0.2f \n", 
+                "varunummer",products->varunummer,"namn",products->namn,"pris",products->pris,"volym",products->volym,"typ",products->typ,"stil",products->stil,"forpackning",products->forpackning,"land",products->land,"producent",products->producent,"alkoholhalt",products->alkoholhalt);
                     printf("--------------------------------------\n");
                 }
                 products = start_of_products;

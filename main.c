@@ -25,7 +25,7 @@ int is_float(char string[]){
     return 1;
 }
 void sort_by_varunummer();
-Vara *search_varunummer(); //<- behövs
+Vara *search_varunummer(); 
 void sort_by_namn();
 static int compare_string (Vara * a, Vara * b);
 int  compare(Vara *, Vara *);
@@ -38,10 +38,9 @@ int number_of_products = 0;
 int main (void) {
 
     products = (Vara *) calloc(100,sizeof(Vara));
-    bool valid_input;
-    char test_string[20]; 
+    bool valid_input, invalid_found = false;;
     char* end;
-    int option;
+    int option, numInvalidChar = 0;
     char tempString[256];
     //läs in varor från varor.csv till products arrayen
     products = Read();
@@ -51,15 +50,11 @@ int main (void) {
     while(products->varunummer != 0){
         end_of_products++;
         number_of_products++;
-        products++;
     };
-    //Göra så products stå på korekt index
     
     FILE *skrivfil;
     char badChars[] = "<>:|?*\\/\" \t"; //these are invalid characters for filnames
-    bool invalid_found = false;
     char fileName[100] = "textdoc";
-    int numInvalidChar = 0;
 
     while(true){
         
@@ -75,14 +70,14 @@ int main (void) {
         valid_input = false;
         do{
             printf("Enter a option (1-6): ");
-            fgets(test_string, 20, stdin);
-            if(test_string[0] == '\n')
+            fgets(tempString, 20, stdin);
+            if(tempString[0] == '\n')
                 valid_input = false;
             else
-                valid_input = isInt(test_string);
+                valid_input = isInt(tempString);
         }while(!valid_input);
 
-        option = strtol(test_string, &end, 10);
+        option = strtol(tempString, &end, 10);
         switch(option){
             case 1:
                 sort_by_varunummer(products,number_of_products,compare,start_of_products);
@@ -91,7 +86,6 @@ int main (void) {
                 sort_by_namn(products, number_of_products, compare_string, start_of_products);
                 break;    
             case 3:
-
                 products = add_vara(products, number_of_products, start_of_products, end_of_products);
                 if(products == NULL)
                     break;
@@ -159,7 +153,6 @@ int main (void) {
                     fflush(stdout);
                     printf("\nGood1bye!\n");
                     printf("\nGood2bye!\n");
-
                 }
 
                 printf("\nGood bye!\n");

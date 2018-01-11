@@ -13,10 +13,12 @@ int isInt(char string[]){
 }
 
 int is_float(char string[]){
+    int dots = 0;
     for(int i = 0; i < strlen(string) - 1; i++){
-        if(!isdigit(string[i]) || string[i] == 0)
-            if(string[i] != '.')
-                return 0;   
+        if(string[i] == '.')
+            dots++;
+        if(!isdigit(string[i]) || dots > 1)
+            return 0;
     } 
     return 1;
 }

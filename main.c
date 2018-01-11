@@ -197,14 +197,19 @@ int main (void) {
             case 6:
                 printf("Save to varor.csv before quitting?(y/n)");
                 fgets(tempString, 5,stdin);
-                if(strcmp(tempString, "y") == 0)
+                //tempString[strlen(tempString - 1)] = '\0';
+                strtok(tempString, "\n");
+                printf("::%s", tempString);
+                if(strcmp(tempString, "y") == 0){
                     save_to_file(products,number_of_products,"varor");
+                    printf("done!");
+                }
 
                 printf("Good bye!\n");
                 exit(0);
                 break;
             default:
-                printf("Something went wrong");
+                printf("\nPlease enter a number between 1-6\n");
 
         }
     }

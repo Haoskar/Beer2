@@ -19,9 +19,9 @@ int is_float(char *string){
     for(int i = 0; i < strlen(string) - 1; i++){
         if(string[i] == '.'){
             dots++;
+            i++;
         }
-        printf("dig:%d\ndot:%d\n",isdigit(string),dots);
-        if((!(isdigit(string[i])) && string[i] != '.')|| dots > 1){
+        if(!(isdigit(string[i])) || dots > 1){
             return 0;
         }
     } 

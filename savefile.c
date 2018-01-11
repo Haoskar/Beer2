@@ -60,8 +60,9 @@ void sort_by_namn(Vara *products, int number_of_products,int compare_string, Var
 
 Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, Vara *end_of_products){
     char *temp_string = (char *) calloc(256,sizeof(char));
+    printf("\n");
     do{
-    printf("\nEnter varunummer: ");
+    printf("Enter varunummer: ");
     fgets(temp_string,256,stdin);
     temp_string = trimwhitespace(temp_string);
     temp_string[strlen(temp_string) - 1] = '\0';

@@ -5,18 +5,17 @@
 #include "structinfo.h"
 #ifndef ____OTHERF____
 #define ____OTHERF____
-/*denna funktionen måste användas med en sträng som har 1 tecken i slutet av stängen som man inte läsa
- *detta p.g.a att den läser till mindre än strlen - 1*/
+/* denna funktion måste bara användas med en sträng som bara har float delen alltså man måste ta bort
+ *sådana tecken man inte vill ha innan man använder funktionen 
+ *p.g.a att den läser till mindre än strlen*/
 int isInt(char string[]){
-    for(int i = 0; i < strlen(string) - 1; i++){
+    for(int i = 0; i < strlen(string); i++){
         if(!isdigit(string[i]) || string[i] == 0)
             return 0;
     } 
     return 1;
 }
-/* denna funktion måste bara användas med en sträng som bara har float delen alltså man måste ta bort
- *sådana tecken man inte vill ha innan man använder funktionen 
- *p.g.a att den läser till mindre än strlen*/
+//samma som ovan
 int is_float(char *string){
     int dots = 0;
     for(int i = 0; i < strlen(string) ; i++){

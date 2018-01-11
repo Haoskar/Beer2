@@ -64,17 +64,14 @@ Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, 
     do{
     printf("\nEnter varunummer: ");
     fgets(tempString,256,stdin);
-<<<<<<< HEAD
     printf("Före:%d",strlen(tempString));
     tempString = trimwhitespace(tempString);
     printf("Efter:%d",strlen(tempString));
     tempString[strlen(tempString) - 1] = '\0';
     }while(!isInt(tempString) && !strcmp(tempString, ""));       
 
-=======
     //tempString[strlen(tempString) - 1] = '\0';  
     }while(!isInt(tempString) && strcmp(tempString, "\n"));       
->>>>>>> c8e1b57bad35efcdc6fced152b27a288b4cc1c23
     products = search_varunummer(tempString, products, number_of_products, start_of_products);
     if (products != NULL){
         printf("\nVarunummer not uniqe, choose another varunummer next time");

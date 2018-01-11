@@ -145,7 +145,7 @@ Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, 
     fgets(tempString,256,stdin);
     tempString = trimwhitespace(tempString);
     tempString[strlen(tempString) - 1] = '\0';
-    }while(!is_float(tempString) && !strcmp(tempString, ""));
+    }while(!is_float(tempString) || !strcmp(tempString, ""));
     products->alkoholhalt = atof(tempString);
 
     return products;                        //returns the added vara

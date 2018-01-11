@@ -7,41 +7,20 @@
 #include "savefile.c"
 #include "other_functions.c"
 
-
-void sort_by_varunummer();
-Vara *search_varunummer(); 
-void sort_by_namn();
-static int compare_string (Vara * a, Vara * b);
-int  compare(Vara *, Vara *);
 Vara *products, *start_of_products,*end_of_products;
 int number_of_products = 0;
 
-
-void f(char *a, int l)//char *b,char *c,char *d,char *e,char *f,char *g,char *h)
-{
-        printf("|   %*s%*s   |",l+strlen(a)/2,a,l-strlen(a)/2,"");
-        /*
-        printf("---%*s%*s---\n",10+strlen(b)/2,s,10-strlen(s)/2,"");
-        printf("---%*s%*s---\n",10+strlen(c)/2,s,10-strlen(s)/2,"");
-        printf("---%*s%*s---\n",10+strlen(d)/2,s,10-strlen(s)/2,"");
-        printf("---%*s%*s---\n",10+strlen(e)/2,s,10-strlen(s)/2,"");
-        printf("---%*s%*s---\n",10+strlen(f)/2,s,10-strlen(s)/2,"");
-        printf("---%*s%*s---\n",10+strlen(g)/2,s,10-strlen(s)/2,"");
-        printf("---%*s%*s---\n",10+strlen(h)/2,s,10-strlen(s)/2,"");*/
-}
-
 int main () {
-    products = (Vara *) calloc(100,sizeof(Vara));
+    products = (Vara *) calloc(100,sizeof(Vara)); //array of varor
     bool valid_input, invalid_found = false;
     char* end;
     int option, numInvalidChar = 0;
     char tempString[256];
-    //läs in varor från varor.csv till products arrayen
-    products = Read();
+    products = Read();    //läs in varor från varor.csv till products arrayen
     start_of_products = products;
     end_of_products = start_of_products;
 
-    while(products->varunummer != 0){
+    while(products->varunummer != 0){ 
         end_of_products++;
         number_of_products++;
         products++;
@@ -50,7 +29,6 @@ int main () {
     FILE *skrivfil;
     char badChars[] = "<>:|?*\\/\" \t"; //these are invalid characters for filnames
     char fileName[100] = "textdoc";
-    printf(":%-10s, %20s\n","hej", "halloj" );
 
     while(true){
         
@@ -82,40 +60,28 @@ int main () {
                 sort_by_namn(products, number_of_products, compare_string, start_of_products);
                 break;    
             case 3:
-            //printf("%-11s: %d\n%-11s: %s","",);
+                if(number_of_products >= 100){
+                    printf("Too many varor!\n");
+                    break;
+                }
                 products = add_vara(products, number_of_products, start_of_products, end_of_products);
                 if(products == NULL)
                     break;
-/*
-                f("varunummer", 2);
-                f("namn", 10);
-                f("pris", 2);
-                f("volym", 2);
-                f("typ", 7);
-                f("stil", 7);
-                f("forpackning", 4);
-                f("land", 8);
-                f("producent", 7);
-                f("alkoholhalt", 2);
-*/
-                printf("\n\nYou have added: \n");
-                
+
+                printf("\n\nYou have added: \n");               
                 printf("%-11s: %d\n%-11s: %s\n%-11s: %0.2f\n%-11s: %0.2f\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %0.2f \n", 
                 "varunummer",products->varunummer,"namn",products->namn,"pris",products->pris,"volym",products->volym,"typ",products->typ,"stil",products->stil,"forpackning",products->forpackning,"land",products->land,"producent",products->producent,"alkoholhalt",products->alkoholhalt);
                 number_of_products++;
                 end_of_products++;
                 printf("\n--\n");
-                //printf("")
                 for(products = start_of_products; products < &start_of_products[number_of_products]; products++){
-                    //printf("varunummer: %d\nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
-                    //products->varunummer,products->namn,products->pris,products->volym,products->typ,products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt);
                     printf("%-11s: %d\n%-11s: %s\n%-11s: %0.2f\n%-11s: %0.2f\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %0.2f \n", 
                     "varunummer",products->varunummer,"namn",products->namn,"pris",products->pris,"volym",products->volym,"typ",products->typ,"stil",products->stil,"forpackning",products->forpackning,"land",products->land,"producent",products->producent,"alkoholhalt",products->alkoholhalt);
                     printf("--------------------------------------\n");
                 }
                 products = start_of_products;
                 break;
-            case 4: //hakar ibland upp sig
+            case 4:
                 printf("\nVarunummer to search: ");
                 fgets(tempString,20, stdin);
                 tempString[strlen(tempString) - 1] = '\0'; //removes newline char
@@ -124,8 +90,11 @@ int main () {
                 if(products == NULL)
                     printf("\nThe number %s did not match any varunummer", tempString);
                 else{
-                    printf("\n%s, has the following information: \nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
-                    tempString, products->namn,products->pris,products->volym,products->typ,products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt); //horrendous printf
+                    //printf("\n%s, has the following information: \nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
+                    //tempString, products->namn,products->pris,products->volym,products->typ,products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt); //horrendous printf
+                    printf("\n%s, has the following information: \n%-11s: %s\n%-11s: %0.2f\n%-11s: %0.2f\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %0.2f \n", 
+                    tempString,"namn",products->namn,"pris",products->pris,"volym",products->volym,"typ",products->typ,"stil",products->stil,"forpackning",products->forpackning,"land",products->land,"producent",products->producent,"alkoholhalt",products->alkoholhalt);
+
                 }
                 products = start_of_products;
                 break;

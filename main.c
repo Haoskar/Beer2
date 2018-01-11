@@ -15,7 +15,7 @@ int main () {
     bool valid_input, invalid_found = false;
     char* end;
     int option, numInvalidChar = 0;
-    char tempString[256];
+    char temp_string[256];
     products = Read();    //läs in varor från varor.csv till products arrayen
     start_of_products = products;
     end_of_products = start_of_products;
@@ -44,16 +44,16 @@ int main () {
         valid_input = false;
         do{
             printf("Enter a option (1-6): ");
-            fgets(tempString, 20, stdin);
-            if(tempString[0] == '\n')
+            fgets(temp_string, 20, stdin);
+            if(temp_string[0] == '\n')
                 valid_input = false;
             else{
-                tempString[strlen(tempString) - 1] = '\0';
-                valid_input = isInt(tempString);
+                temp_string[strlen(temp_string) - 1] = '\0';
+                valid_input = isInt(temp_string);
             }
         }while(!valid_input);
 
-        option = strtol(tempString, &end, 10);
+        option = strtol(temp_string, &end, 10);
         switch(option){
             case 1:
                 sort_by_varunummer(products,number_of_products,compare,start_of_products);
@@ -76,24 +76,19 @@ int main () {
                 number_of_products++;
                 end_of_products++;
                 printf("\n--\n");
-                for(products = start_of_products; products < &start_of_products[number_of_products]; products++){
-                    printf("%-11s: %d\n%-11s: %s\n%-11s: %0.2f\n%-11s: %0.2f\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %0.2f \n", 
-                    "varunummer",products->varunummer,"namn",products->namn,"pris",products->pris,"volym",products->volym,"typ",products->typ,"stil",products->stil,"forpackning",products->forpackning,"land",products->land,"producent",products->producent,"alkoholhalt",products->alkoholhalt);
-                    printf("--------------------------------------\n");
-                }
                 products = start_of_products;
                 break;
             case 4:
                 printf("\nVarunummer to search: ");
-                fgets(tempString,20, stdin);
-                tempString[strlen(tempString) - 1] = '\0'; //removes newline char
+                fgets(temp_string,20, stdin);
+                temp_string[strlen(temp_string) - 1] = '\0'; //removes newline char
 
-                products = search_varunummer(tempString, products, number_of_products, start_of_products);
+                products = search_varunummer(temp_string, products, number_of_products, start_of_products);
                 if(products == NULL)
-                    printf("\n%s did not match any varunummer", tempString);
+                    printf("\n%s did not match any varunummer", temp_string);
                 else{
                     printf("\n%s, has the following information: \n%-11s: %s\n%-11s: %0.2f\n%-11s: %0.2f\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %0.2f \n", 
-                    tempString,"namn",products->namn,"pris",products->pris,"volym",products->volym,"typ",products->typ,"stil",products->stil,"forpackning",products->forpackning,"land",products->land,"producent",products->producent,"alkoholhalt",products->alkoholhalt);
+                    temp_string,"namn",products->namn,"pris",products->pris,"volym",products->volym,"typ",products->typ,"stil",products->stil,"forpackning",products->forpackning,"land",products->land,"producent",products->producent,"alkoholhalt",products->alkoholhalt);
 
                 }
                 products = start_of_products;
@@ -124,12 +119,12 @@ int main () {
                 break;
             case 6:
                 printf("Save to varor.csv before quitting?(y/n)");
-                fgets(tempString, 5,stdin);
-                strtok(tempString, "\n");
-                if(strcmp(tempString, "y") == 0){
+                fgets(temp_string, 5,stdin);
+                strtok(temp_string, "\n");
+                if(strcmp(temp_string, "y") == 0){
                     products = start_of_products;
-                    strcpy(tempString,"varor");
-                    save_to_file(products,number_of_products,tempString);
+                    strcpy(temp_string,"varor");
+                    save_to_file(products,number_of_products,temp_string);
                     printf("\n");
                 }
                 printf("\nGood bye!\n");

@@ -59,93 +59,93 @@ void sort_by_namn(Vara *products, int number_of_products,int compare_string, Var
 }
 
 Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, Vara *end_of_products){
-    char *tempString = (char *) calloc(256,sizeof(char));
+    char *temp_string = (char *) calloc(256,sizeof(char));
     do{
     printf("\nEnter varunummer: ");
-    fgets(tempString,256,stdin);
-    tempString = trimwhitespace(tempString);
-    tempString[strlen(tempString) - 1] = '\0';
-    }while(!isInt(tempString) || !strcmp(tempString, ""));       
+    fgets(temp_string,256,stdin);
+    temp_string = trimwhitespace(temp_string);
+    temp_string[strlen(temp_string) - 1] = '\0';
+    }while(!isInt(temp_string) || !strcmp(temp_string, ""));       
 
-    products = search_varunummer(tempString, products, number_of_products, start_of_products);
+    products = search_varunummer(temp_string, products, number_of_products, start_of_products);
     if (products != NULL){
         printf("\nVarunummer not uniqe, choose another varunummer next time");
         return NULL;
     }
     products = end_of_products;         //adding a new product, needs to point at end of array
-    products->varunummer = atoi(tempString);
+    products->varunummer = atoi(temp_string);
 
     do{
     printf("Enter namn: ");
-    fgets(tempString,256,stdin);
-    tempString = trimwhitespace(tempString);
-    tempString[strlen(tempString) - 1] = '\0';
-    }while(!strcmp(tempString, ""));
-    strcpy(products->namn,tempString);
+    fgets(temp_string,256,stdin);
+    temp_string = trimwhitespace(temp_string);
+    temp_string[strlen(temp_string) - 1] = '\0';
+    }while(!strcmp(temp_string, ""));
+    strcpy(products->namn,temp_string);
 
     do{
     printf("Enter pris: ");
-    fgets(tempString,256,stdin);
-    tempString = trimwhitespace(tempString);
-    tempString[strlen(tempString) - 1] = '\0';
-    }while(!is_float(tempString) || !strcmp(tempString, ""));
-    products->pris = atof(tempString);
+    fgets(temp_string,256,stdin);
+    temp_string = trimwhitespace(temp_string);
+    temp_string[strlen(temp_string) - 1] = '\0';
+    }while(!is_float(temp_string) || !strcmp(temp_string, ""));
+    products->pris = atof(temp_string);
 
     do{          
     printf("Enter volym: ");
-    fgets(tempString,256,stdin);
-    tempString = trimwhitespace(tempString);
-    tempString[strlen(tempString) - 1] = '\0';
-    }while(!is_float(tempString) || !strcmp(tempString, ""));
-    products->volym = atof(tempString);
+    fgets(temp_string,256,stdin);
+    temp_string = trimwhitespace(temp_string);
+    temp_string[strlen(temp_string) - 1] = '\0';
+    }while(!is_float(temp_string) || !strcmp(temp_string, ""));
+    products->volym = atof(temp_string);
 
     do{                
     printf("Enter typ: ");
-    fgets(tempString,256,stdin);
-    tempString = trimwhitespace(tempString);
-    tempString[strlen(tempString) - 1] = '\0';
-    }while(!strcmp(tempString, ""));
-    strcpy(products->typ,tempString);
+    fgets(temp_string,256,stdin);
+    temp_string = trimwhitespace(temp_string);
+    temp_string[strlen(temp_string) - 1] = '\0';
+    }while(!strcmp(temp_string, ""));
+    strcpy(products->typ,temp_string);
 
     do{                
     printf("Enter stil: ");
-    fgets(tempString,256,stdin);
-    tempString = trimwhitespace(tempString);
-    tempString[strlen(tempString) - 1] = '\0';
-    }while(!strcmp(tempString, ""));
-    strcpy(products->stil,tempString);
+    fgets(temp_string,256,stdin);
+    temp_string = trimwhitespace(temp_string);
+    temp_string[strlen(temp_string) - 1] = '\0';
+    }while(!strcmp(temp_string, ""));
+    strcpy(products->stil,temp_string);
 
     do{               
     printf("Enter forpackning: ");
-    fgets(tempString,256,stdin);
-    tempString = trimwhitespace(tempString);
-    tempString[strlen(tempString) - 1] = '\0';
-    }while(!strcmp(tempString, ""));
-    strcpy(products->forpackning,tempString);
+    fgets(temp_string,256,stdin);
+    temp_string = trimwhitespace(temp_string);
+    temp_string[strlen(temp_string) - 1] = '\0';
+    }while(!strcmp(temp_string, ""));
+    strcpy(products->forpackning,temp_string);
     
     do{              
     printf("Enter land: ");
-    fgets(tempString,256,stdin);
-    tempString = trimwhitespace(tempString);
-    tempString[strlen(tempString) - 1] = '\0';
-    }while(!strcmp(tempString, ""));
-    strcpy(products->land,tempString);
+    fgets(temp_string,256,stdin);
+    temp_string = trimwhitespace(temp_string);
+    temp_string[strlen(temp_string) - 1] = '\0';
+    }while(!strcmp(temp_string, ""));
+    strcpy(products->land,temp_string);
 
     do{           
     printf("Enter producent: ");
-    fgets(tempString,256,stdin);
-    tempString = trimwhitespace(tempString);
-    tempString[strlen(tempString) - 1] = '\0';
-    }while(!strcmp(tempString, ""));
-    strcpy(products->producent,tempString);
+    fgets(temp_string,256,stdin);
+    temp_string = trimwhitespace(temp_string);
+    temp_string[strlen(temp_string) - 1] = '\0';
+    }while(!strcmp(temp_string, ""));
+    strcpy(products->producent,temp_string);
 
     do{      
     printf("Enter alkoholhalt: ");
-    fgets(tempString,256,stdin);
-    tempString = trimwhitespace(tempString);
-    tempString[strlen(tempString) - 1] = '\0';
-    }while(!is_float(tempString) || !strcmp(tempString, ""));
-    products->alkoholhalt = atof(tempString);
+    fgets(temp_string,256,stdin);
+    temp_string = trimwhitespace(temp_string);
+    temp_string[strlen(temp_string) - 1] = '\0';
+    }while(!is_float(temp_string) || !strcmp(temp_string, ""));
+    products->alkoholhalt = atof(temp_string);
 
     return products;                        //returns the added vara
 }

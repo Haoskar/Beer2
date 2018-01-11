@@ -60,7 +60,7 @@ void sort_by_namn(Vara *products, int number_of_products,int compare_string, Var
 }
 
 Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, Vara *end_of_products){
-
+    double d;
     char tempString[256];
     printf("\nEnter varunummer: ");
     fgets(tempString,256,stdin);

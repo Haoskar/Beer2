@@ -14,7 +14,7 @@ int isInt(char string[]){
     return 1;
 }
 
-int is_float(char string[]){
+int is_float(char *string){
     int dots = 0;
     for(int i = 0; i < strlen(string) - 1; i++){
         if(string[i] == '.'){

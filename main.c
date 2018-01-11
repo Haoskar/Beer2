@@ -90,8 +90,6 @@ int main () {
                 if(products == NULL)
                     printf("\nThe number %s did not match any varunummer", tempString);
                 else{
-                    //printf("\n%s, has the following information: \nnamn: %s\npris: %0.2f\nvolym: %0.2f\ntyp: %s\nstil: %s\nforpackning: %s\nland: %s\nproducent: %s\nalkoholhalt: %0.2f \n", 
-                    //tempString, products->namn,products->pris,products->volym,products->typ,products->stil,products->forpackning,products->land,products->producent,products->alkoholhalt); //horrendous printf
                     printf("\n%s, has the following information: \n%-11s: %s\n%-11s: %0.2f\n%-11s: %0.2f\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %s\n%-11s: %0.2f \n", 
                     tempString,"namn",products->namn,"pris",products->pris,"volym",products->volym,"typ",products->typ,"stil",products->stil,"forpackning",products->forpackning,"land",products->land,"producent",products->producent,"alkoholhalt",products->alkoholhalt);
 
@@ -129,9 +127,7 @@ int main () {
                 if(strcmp(tempString, "y") == 0){
                     products = start_of_products;
                     save_to_file(products,number_of_products,"varor");
-                    fflush(stdout);
-                    printf("\nGood1bye!\n");
-                    printf("\nGood2bye!\n");
+                    printf("\n");
                 }
                 printf("\nGood bye!\n");
                 exit(0);

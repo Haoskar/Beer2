@@ -60,12 +60,12 @@ void sort_by_namn(Vara *products, int number_of_products,int compare_string, Var
 }
 
 Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, Vara *end_of_products){
-    double d;
     char tempString[256];
+    do{
     printf("\nEnter varunummer: ");
     fgets(tempString,256,stdin);
-    tempString[strlen(tempString) - 1] = '\0'; //en funktion som tarbort newline tecknet och ersätter med \0
-               
+    //tempString[strlen(tempString) - 1] = '\0';  
+    }while(!isInt(tempString) && !strcmp(tempString, " \n"));       
     products = search_varunummer(tempString, products, number_of_products, start_of_products);
     if (products != NULL){
         printf("\nVarunummer not uniqe, choose another varunummer next time");
@@ -73,10 +73,11 @@ Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, 
     }
     products = end_of_products;         //adding a new product, needs to point at end of array
     products->varunummer = atoi(tempString);
+
     do{
     printf("Enter namn: ");
     fgets(tempString,256,stdin);
-    tempString[strlen(tempString) - 1] = '\0';
+    tempString[strlen(tempString) - 1] = '\0'; //tar bort newline tecknet och ersätter med \0
     }while(!strcmp(tempString, ""));
     strcpy(products->namn,tempString);
 
@@ -86,10 +87,12 @@ Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, 
     tempString[strlen(tempString) - 1] = '\0';
     }while(!is_float(tempString));
     products->pris = atof(tempString);
-                
+
+    do{          
     printf("Enter volym: ");
     fgets(tempString,256,stdin);
     tempString[strlen(tempString) - 1] = '\0';
+    }while(!is_float(tempString));
     products->volym = atof(tempString);
 
     do{                
@@ -126,10 +129,12 @@ Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, 
     tempString[strlen(tempString) - 1] = '\0';
     }while(!strcmp(tempString, ""));
     strcpy(products->producent,tempString);
-                
+
+    do{      
     printf("Enter alkoholhalt: ");
     fgets(tempString,256,stdin);
     tempString[strlen(tempString) - 1] = '\0';
+    }while(!is_float(tempString));
     products->alkoholhalt = atof(tempString);
     return products;                        //returns the added vara
 }

@@ -82,7 +82,7 @@ Vara *add_vara(Vara *products, int number_of_products, Vara *start_of_products, 
     printf("Enter pris: ");
     fgets(tempString,256,stdin);
     tempString[strlen(tempString) - 1] = '\0';
-    if(!is_float(tempString));
+    if(is_float(tempString));
         break;
     }while(1);
     products->pris = atof(tempString);

@@ -199,8 +199,9 @@ int main (void) {
                 fgets(tempString, 5,stdin);
                 //tempString[strlen(tempString - 1)] = '\0';
                 strtok(tempString, "\n");
-                printf("::%s", tempString);
+                //printf("::%s", tempString);
                 if(strcmp(tempString, "y") == 0){
+                    products = start_of_products;
                     save_to_file(products,number_of_products,"varor");
                     printf("done!");
                 }

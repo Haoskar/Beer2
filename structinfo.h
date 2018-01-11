@@ -9,7 +9,7 @@ typedef struct vara{
     char typ[100];
     char stil[100];
     char forpackning[20];
-    char land[20];
+    char land[20];          //20 är för kort för ölet med varunummer 1282, har 21 tecken
     char producent[50];
     float alkoholhalt;
 }Vara;
